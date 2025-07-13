@@ -255,8 +255,8 @@ class PresentationSlider {
             case 3: // AI Evolution slide
                 this.animateAIEvolution();
                 break;
-            case 4: // Features slide
-                this.animateFeatures();
+            case 4: // xCloud Workflow slide
+                this.animateXCloudWorkflow();
                 break;
         }
     }
@@ -463,6 +463,168 @@ class PresentationSlider {
         });
     }
 
+    animateXCloudWorkflow() {
+        // Animate workflow steps
+        document.querySelectorAll('.workflow-step').forEach((step, index) => {
+            setTimeout(() => {
+                step.style.opacity = '1';
+                step.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+
+        // Animate workflow progress fill
+        setTimeout(() => {
+            const progressFill = document.getElementById('workflowProgress');
+            if (progressFill) {
+                progressFill.style.width = '100%';
+            }
+        }, 500);
+
+        // Setup workflow interactions
+        this.setupWorkflowInteractions();
+    }
+
+    setupWorkflowInteractions() {
+        const detailsPanel = document.getElementById('workflowDetailsPanel');
+        let currentActiveStep = null;
+        const workflowSteps = document.querySelectorAll('.workflow-step');
+        const totalSteps = workflowSteps.length;
+
+        // Function to activate a specific workflow step
+        const activateWorkflowStep = (stepNumber) => {
+            // Remove active from all steps and details
+            document.querySelectorAll('.workflow-step').forEach(s => {
+                s.classList.remove('active');
+            });
+            document.querySelectorAll('.workflow-details-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Find and activate the target step
+            const targetStep = document.querySelector(`.workflow-step[data-step="${stepNumber}"]`);
+            if (targetStep) {
+                targetStep.classList.add('active');
+                const targetContent = document.querySelector(`.workflow-details-content[data-step="${stepNumber}"]`);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+                detailsPanel.classList.add('active');
+                currentActiveStep = stepNumber;
+
+                // Add visual feedback
+                const marker = targetStep.querySelector('.step-marker-workflow');
+                marker.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    marker.style.transform = '';
+                }, 150);
+            }
+        };
+
+        // Function to navigate to next/previous workflow step
+        const navigateWorkflowStep = (direction) => {
+            if (currentActiveStep === null) {
+                // If no step is active, start with the first one
+                activateWorkflowStep('1');
+                return;
+            }
+
+            const currentNumber = parseInt(currentActiveStep);
+            let nextNumber;
+
+            if (direction === 'next') {
+                nextNumber = currentNumber < totalSteps ? currentNumber + 1 : 1; // Loop to first
+            } else {
+                nextNumber = currentNumber > 1 ? currentNumber - 1 : totalSteps; // Loop to last
+            }
+
+            activateWorkflowStep(nextNumber.toString());
+        };
+
+        // Click handlers for workflow steps
+        workflowSteps.forEach(step => {
+            step.addEventListener('click', () => {
+                const stepNumber = step.dataset.step;
+                const isCurrentlyActive = step.classList.contains('active');
+
+                if (isCurrentlyActive) {
+                    // Close details panel if clicking the same step
+                    step.classList.remove('active');
+                    document.querySelectorAll('.workflow-details-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    detailsPanel.classList.remove('active');
+                    currentActiveStep = null;
+                } else {
+                    activateWorkflowStep(stepNumber);
+                }
+            });
+
+            // Keyboard accessibility for individual steps
+            step.setAttribute('tabindex', '0');
+            step.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    step.click();
+                }
+            });
+        });
+
+        // Global keyboard navigation for workflow (only when on slide 4)
+        const handleWorkflowKeyboard = (e) => {
+            // Only handle workflow navigation when on slide 4
+            if (this.currentSlide !== 4) return;
+
+            switch(e.key) {
+                case 'ArrowUp':
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigateWorkflowStep('previous');
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigateWorkflowStep('next');
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    if (currentActiveStep) {
+                        // Close active step
+                        document.querySelectorAll('.workflow-step').forEach(s => {
+                            s.classList.remove('active');
+                        });
+                        document.querySelectorAll('.workflow-details-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        detailsPanel.classList.remove('active');
+                        currentActiveStep = null;
+                    }
+                    break;
+            }
+        };
+
+        // Add the workflow keyboard handler
+        document.addEventListener('keydown', handleWorkflowKeyboard);
+
+        // Store reference for cleanup if needed
+        this.workflowKeyboardHandler = handleWorkflowKeyboard;
+
+        // Close details panel when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.workflow-step') && !e.target.closest('.workflow-details-panel')) {
+                if (currentActiveStep) {
+                    document.querySelectorAll('.workflow-step').forEach(s => {
+                        s.classList.remove('active');
+                    });
+                    document.querySelectorAll('.workflow-details-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    detailsPanel.classList.remove('active');
+                    currentActiveStep = null;
+                }
+            }
+        });
+    }
+
     animateFeatures() {
         document.querySelectorAll('.feature-card').forEach((card, index) => {
             setTimeout(() => {
@@ -473,9 +635,9 @@ class PresentationSlider {
     }
 
     handleKeyboard(e) {
-        // Skip slide navigation if we're on slide 3 and using Up/Down for timeline navigation
-        if (this.currentSlide === 3 && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
-            return; // Let the timeline handler manage these keys
+        // Skip slide navigation if we're on slide 3 or 4 and using Up/Down for content navigation
+        if ((this.currentSlide === 3 || this.currentSlide === 4) && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+            return; // Let the content handlers manage these keys
         }
 
         switch(e.key) {
@@ -489,15 +651,15 @@ class PresentationSlider {
                 this.nextSlide();
                 break;
             case 'ArrowUp':
-                // Only handle for non-slide-3 or when no timeline is active
-                if (this.currentSlide !== 3) {
+                // Only handle for slides without special navigation
+                if (this.currentSlide !== 3 && this.currentSlide !== 4) {
                     e.preventDefault();
                     this.previousSlide();
                 }
                 break;
             case 'ArrowDown':
-                // Only handle for non-slide-3 or when no timeline is active
-                if (this.currentSlide !== 3) {
+                // Only handle for slides without special navigation
+                if (this.currentSlide !== 3 && this.currentSlide !== 4) {
                     e.preventDefault();
                     this.nextSlide();
                 }
@@ -595,7 +757,7 @@ class PresentationSlider {
             { number: 1, title: 'AI in QA & Security Testing', content: 'AI QA Security Testing Practical Applications Reduan Masud Arafat xCloud robot shield bug' },
             { number: 2, title: 'Workshop Agenda', content: 'Brief Evolution Modern AI Generate Test Cases DevOps Dungeon Gemini Security Testing Learning Development Trends Resources QA Next Steps' },
             { number: 3, title: 'Brief Evolution of Modern AI', content: 'ChatGPT hype 100 million users prompt engineering agentic AI n8n vive coding copilot context engineering RAG retrieval augmented generation' },
-            { number: 4, title: 'Generate Test Cases Using AI', content: 'AI-powered test case generation ChatGPT GitHub Copilot Testim Applitools automated creation comprehensive coverage edge case detection' },
+            { number: 4, title: 'Generate Test Cases Using AI - xCloud Workflow', content: 'xCloud workflow GitHub Project Manager Pull Request AI-powered test case generation Augment VS Code markdown template prerequisites developer QA synchronization' },
             { number: 5, title: 'DevOps Dungeon App', content: 'DevOps Dungeon gamified learning platform interactive quests achievement system team collaboration progress tracking' },
             { number: 6, title: 'Gemini - Underrated App', content: 'Google Gemini AI assistant code analysis test documentation bug investigation automation scripts' },
             { number: 7, title: 'AI in Security Testing', content: 'vulnerability detection penetration testing threat monitoring compliance automation Snyk Veracode Checkmarx Metasploit Burp Suite' },

@@ -433,44 +433,260 @@
                     </div>
                 </section>
 
-                <!-- Slide 4: Generate Test Cases Using AI -->
+                <!-- Slide 4: Generate Test Cases Using AI - xCloud Workflow -->
                 <section class="slide" data-slide="4">
-                    <div class="slide-content flip-cards-slide">
-                        <h2 class="slide-title">Generate Test Cases Using AI</h2>
-                        <div class="flip-cards-container">
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                        <h3>Traditional Approach</h3>
-                                        <p>Manual test case creation</p>
-                                        <ul>
-                                            <li>Time-consuming process</li>
-                                            <li>Human error prone</li>
-                                            <li>Limited test coverage</li>
-                                            <li>Repetitive work</li>
-                                            <li>Inconsistent quality</li>
-                                        </ul>
+                    <div class="slide-content xcloud-workflow-slide">
+                        <h2 class="slide-title">Generate Test Cases Using AI - xCloud Workflow</h2>
+
+                        <!-- Prerequisites Section -->
+                        <div class="prerequisites-section">
+                            <div class="prerequisites-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Prerequisites</h3>
+                            </div>
+                            <div class="prerequisites-content">
+                                <div class="prerequisite-item">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub access to xCloud repository</span>
+                                </div>
+                                <div class="prerequisite-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Proper Pull Request workflow knowledge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workflow Navigation -->
+                        <div class="workflow-navigation">
+                            <div class="workflow-progress">
+                                <div class="progress-line-workflow"></div>
+                                <div class="progress-fill-workflow" id="workflowProgress"></div>
+                            </div>
+
+                            <div class="workflow-steps-container">
+                                <!-- Step 1: xCloud Process Overview -->
+                                <div class="workflow-step" data-step="1">
+                                    <div class="step-marker-workflow">
+                                        <i class="fas fa-project-diagram"></i>
+                                        <span class="step-number">1</span>
                                     </div>
-                                    <div class="flip-card-back">
-                                        <h3>AI-Powered Approach</h3>
-                                        <p>Intelligent test case generation</p>
-                                        <ul>
-                                            <li>Automated test creation</li>
-                                            <li>Comprehensive coverage</li>
-                                            <li>Edge case detection</li>
-                                            <li>Natural language input</li>
-                                            <li>Consistent quality</li>
-                                        </ul>
+                                    <div class="step-info">
+                                        <h4>xCloud Process Overview</h4>
+                                        <span class="step-description">GitHub Project Manager Integration</span>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Before vs After -->
+                                <div class="workflow-step" data-step="2">
+                                    <div class="step-marker-workflow">
+                                        <i class="fas fa-balance-scale"></i>
+                                        <span class="step-number">2</span>
+                                    </div>
+                                    <div class="step-info">
+                                        <h4>Before vs. After Comparison</h4>
+                                        <span class="step-description">Traditional vs AI-Powered Methods</span>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Live Demo -->
+                                <div class="workflow-step" data-step="3">
+                                    <div class="step-marker-workflow">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span class="step-number">3</span>
+                                    </div>
+                                    <div class="step-info">
+                                        <h4>Live Demo</h4>
+                                        <span class="step-description">Interactive Workflow Demonstration</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <p class="flip-instruction">Click the card to see the transformation!</p>
-                        <div class="ai-tools-showcase">
-                            <div class="tool-badge">ChatGPT</div>
-                            <div class="tool-badge">GitHub Copilot</div>
-                            <div class="tool-badge">Testim</div>
-                            <div class="tool-badge">Applitools</div>
+
+                        <!-- Expandable Content Panel -->
+                        <div class="workflow-details-panel" id="workflowDetailsPanel">
+                            <!-- Step 1 Content -->
+                            <div class="workflow-details-content" data-step="1">
+                                <div class="details-header-workflow">
+                                    <h3>xCloud Process Overview</h3>
+                                    <span class="details-badge">GitHub Integration</span>
+                                </div>
+                                <div class="process-overview">
+                                    <div class="overview-item">
+                                        <div class="overview-icon">
+                                            <i class="fab fa-github"></i>
+                                        </div>
+                                        <div class="overview-content">
+                                            <h5>GitHub Project Manager Integration</h5>
+                                            <p>Seamless synchronization between developers and QA teams through automated project management</p>
+                                        </div>
+                                    </div>
+                                    <div class="overview-item">
+                                        <div class="overview-icon">
+                                            <i class="fas fa-code-branch"></i>
+                                        </div>
+                                        <div class="overview-content">
+                                            <h5>Pull Request Workflow</h5>
+                                            <p>Structured workflow for features, fixes, and releases with automated test case generation</p>
+                                        </div>
+                                    </div>
+                                    <div class="overview-item">
+                                        <div class="overview-icon">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </div>
+                                        <div class="overview-content">
+                                            <h5>Developer-QA Synchronization</h5>
+                                            <p>Real-time collaboration and communication through integrated tools and workflows</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 Content -->
+                            <div class="workflow-details-content" data-step="2">
+                                <div class="details-header-workflow">
+                                    <h3>Before vs. After Comparison</h3>
+                                    <span class="details-badge">Transformation</span>
+                                </div>
+                                <div class="comparison-container">
+                                    <div class="comparison-side before">
+                                        <div class="comparison-header">
+                                            <i class="fas fa-clock"></i>
+                                            <h4>Traditional Method</h4>
+                                        </div>
+                                        <div class="comparison-content">
+                                            <ul class="comparison-list">
+                                                <li>Manual test case writing</li>
+                                                <li>Time-consuming QA briefings</li>
+                                                <li>Lengthy code review processes</li>
+                                                <li>Inconsistent test coverage</li>
+                                                <li>Human error prone</li>
+                                            </ul>
+                                            <div class="time-indicator">
+                                                <span class="time-value">4-6 hours</span>
+                                                <span class="time-label">per feature</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comparison-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="comparison-side after">
+                                        <div class="comparison-header">
+                                            <i class="fas fa-robot"></i>
+                                            <h4>AI-Powered Method</h4>
+                                        </div>
+                                        <div class="comparison-content">
+                                            <ul class="comparison-list">
+                                                <li>Automated generation using Augment</li>
+                                                <li>PR ID input for context</li>
+                                                <li>Comprehensive test coverage</li>
+                                                <li>Consistent quality output</li>
+                                                <li>Edge case detection</li>
+                                            </ul>
+                                            <div class="time-indicator success">
+                                                <span class="time-value">30-45 min</span>
+                                                <span class="time-label">per feature</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 Content -->
+                            <div class="workflow-details-content" data-step="3">
+                                <div class="details-header-workflow">
+                                    <h3>Live Demo</h3>
+                                    <span class="details-badge">Interactive</span>
+                                </div>
+                                <div class="demo-section">
+                                    <div class="demo-actions">
+                                        <button class="demo-button primary" onclick="window.open('vscode://file', '_blank')">
+                                            <i class="fas fa-code"></i>
+                                            <span>Open VS Code</span>
+                                        </button>
+                                        <button class="demo-button secondary" onclick="window.open('https://github.com/xCloudDev/xCloud/pulls', '_blank')">
+                                            <i class="fab fa-github"></i>
+                                            <span>View GitHub PRs</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="demo-workflow">
+                                        <div class="workflow-step-demo">
+                                            <div class="step-number-demo">1</div>
+                                            <div class="step-content-demo">
+                                                <h5>Select Pull Request</h5>
+                                                <p>Choose the PR ID from xCloud repository</p>
+                                                <div class="code-example">
+                                                    <code>PR #1234: Feature - User Authentication</code>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="workflow-step-demo">
+                                            <div class="step-number-demo">2</div>
+                                            <div class="step-content-demo">
+                                                <h5>Generate with Augment</h5>
+                                                <p>Use AI to create comprehensive test cases</p>
+                                                <div class="markdown-template">
+                                                    <div class="template-header">
+                                                        <i class="fab fa-markdown"></i>
+                                                        <span>Markdown Prompt Template</span>
+                                                    </div>
+                                                    <div class="template-content">
+                                                        <pre><code># Test Case Generation for PR #{PR_ID}
+
+## Context
+- Feature: {FEATURE_NAME}
+- Changes: {CHANGE_DESCRIPTION}
+- Files Modified: {FILE_LIST}
+
+## Generate test cases covering:
+- Functional testing scenarios
+- Edge cases and boundary conditions
+- Integration testing points
+- Security considerations
+- Performance implications</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="workflow-step-demo">
+                                            <div class="step-number-demo">3</div>
+                                            <div class="step-content-demo">
+                                                <h5>Review & Execute</h5>
+                                                <p>Validate generated test cases and execute testing</p>
+                                                <div class="results-preview">
+                                                    <div class="result-item">
+                                                        <i class="fas fa-check-circle"></i>
+                                                        <span>25 test cases generated</span>
+                                                    </div>
+                                                    <div class="result-item">
+                                                        <i class="fas fa-shield-alt"></i>
+                                                        <span>Security tests included</span>
+                                                    </div>
+                                                    <div class="result-item">
+                                                        <i class="fas fa-tachometer-alt"></i>
+                                                        <span>Performance tests added</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workflow Navigation Hint -->
+                        <div class="workflow-hint">
+                            <div class="hint-section">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Click any workflow step to explore details</span>
+                            </div>
+                            <div class="hint-section">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Use <kbd>↑</kbd> <kbd>↓</kbd> keys to navigate steps • <kbd>Esc</kbd> to close</span>
+                            </div>
                         </div>
                     </div>
                 </section>
