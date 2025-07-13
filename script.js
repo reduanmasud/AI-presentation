@@ -258,8 +258,8 @@ class PresentationSlider {
             case 4: // xCloud Workflow slide
                 this.animateXCloudWorkflow();
                 break;
-            case 5: // DevOps Dungeon slide
-                this.animateDevOpsDungeon();
+            case 5: // DevOps Dungeon simple slide
+                this.animateDevOpsDungeonSimple();
                 break;
         }
     }
@@ -628,164 +628,21 @@ class PresentationSlider {
         });
     }
 
-    animateDevOpsDungeon() {
-        // Animate learning aspects
-        document.querySelectorAll('.learning-aspect').forEach((aspect, index) => {
-            setTimeout(() => {
-                aspect.style.opacity = '1';
-                aspect.style.transform = 'translateY(0)';
-            }, index * 200);
-        });
+    animateDevOpsDungeonSimple() {
+        // Simple animations for the streamlined slide
+        const elements = [
+            '.platform-overview-simple',
+            '.preview-section',
+            '.engagement-section'
+        ];
 
-        // Animate learning progress fill
-        setTimeout(() => {
-            const progressFill = document.getElementById('learningProgress');
-            if (progressFill) {
-                progressFill.style.width = '100%';
-            }
-        }, 500);
-
-        // Setup learning interactions
-        this.setupLearningInteractions();
-    }
-
-    setupLearningInteractions() {
-        const detailsPanel = document.getElementById('learningDetailsPanel');
-        let currentActiveAspect = null;
-        const learningAspects = document.querySelectorAll('.learning-aspect');
-        const totalAspects = learningAspects.length;
-
-        // Function to activate a specific learning aspect
-        const activateLearningAspect = (aspectNumber) => {
-            // Remove active from all aspects and details
-            document.querySelectorAll('.learning-aspect').forEach(a => {
-                a.classList.remove('active');
-            });
-            document.querySelectorAll('.learning-details-content').forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Find and activate the target aspect
-            const targetAspect = document.querySelector(`.learning-aspect[data-aspect="${aspectNumber}"]`);
-            if (targetAspect) {
-                targetAspect.classList.add('active');
-                const targetContent = document.querySelector(`.learning-details-content[data-aspect="${aspectNumber}"]`);
-                if (targetContent) {
-                    targetContent.classList.add('active');
-                }
-                detailsPanel.classList.add('active');
-                currentActiveAspect = aspectNumber;
-
-                // Add visual feedback
-                const marker = targetAspect.querySelector('.aspect-marker-learning');
-                marker.style.transform = 'scale(0.95)';
+        elements.forEach((selector, index) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                // Elements already have CSS animations, just ensure they're visible
                 setTimeout(() => {
-                    marker.style.transform = '';
-                }, 150);
-            }
-        };
-
-        // Function to navigate to next/previous learning aspect
-        const navigateLearningAspect = (direction) => {
-            if (currentActiveAspect === null) {
-                // If no aspect is active, start with the first one
-                activateLearningAspect('1');
-                return;
-            }
-
-            const currentNumber = parseInt(currentActiveAspect);
-            let nextNumber;
-
-            if (direction === 'next') {
-                nextNumber = currentNumber < totalAspects ? currentNumber + 1 : 1; // Loop to first
-            } else {
-                nextNumber = currentNumber > 1 ? currentNumber - 1 : totalAspects; // Loop to last
-            }
-
-            activateLearningAspect(nextNumber.toString());
-        };
-
-        // Click handlers for learning aspects
-        learningAspects.forEach(aspect => {
-            aspect.addEventListener('click', () => {
-                const aspectNumber = aspect.dataset.aspect;
-                const isCurrentlyActive = aspect.classList.contains('active');
-
-                if (isCurrentlyActive) {
-                    // Close details panel if clicking the same aspect
-                    aspect.classList.remove('active');
-                    document.querySelectorAll('.learning-details-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    detailsPanel.classList.remove('active');
-                    currentActiveAspect = null;
-                } else {
-                    activateLearningAspect(aspectNumber);
-                }
-            });
-
-            // Keyboard accessibility for individual aspects
-            aspect.setAttribute('tabindex', '0');
-            aspect.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    aspect.click();
-                }
-            });
-        });
-
-        // Global keyboard navigation for learning (only when on slide 5)
-        const handleLearningKeyboard = (e) => {
-            // Only handle learning navigation when on slide 5
-            if (this.currentSlide !== 5) return;
-
-            switch(e.key) {
-                case 'ArrowUp':
-                    e.preventDefault();
-                    e.stopPropagation();
-                    navigateLearningAspect('previous');
-                    break;
-                case 'ArrowDown':
-                    e.preventDefault();
-                    e.stopPropagation();
-                    navigateLearningAspect('next');
-                    break;
-                case 'Escape':
-                    e.preventDefault();
-                    if (currentActiveAspect) {
-                        // Close active aspect
-                        document.querySelectorAll('.learning-aspect').forEach(a => {
-                            a.classList.remove('active');
-                        });
-                        document.querySelectorAll('.learning-details-content').forEach(content => {
-                            content.classList.remove('active');
-                        });
-                        detailsPanel.classList.remove('active');
-                        currentActiveAspect = null;
-                    }
-                    break;
-            }
-        };
-
-        // Add the learning keyboard handler
-        document.addEventListener('keydown', handleLearningKeyboard);
-
-        // Store reference for cleanup if needed
-        this.learningKeyboardHandler = handleLearningKeyboard;
-
-        // Close details panel when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.learning-aspect') && !e.target.closest('.learning-details-panel')) {
-                if (currentActiveAspect) {
-                    document.querySelectorAll('.learning-aspect').forEach(a => {
-                        a.classList.remove('active');
-                    });
-                    document.querySelectorAll('.learning-details-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    detailsPanel.classList.remove('active');
-                    currentActiveAspect = null;
-                }
+                    element.style.opacity = '1';
+                }, index * 200);
             }
         });
     }
@@ -801,7 +658,7 @@ class PresentationSlider {
 
     handleKeyboard(e) {
         // Skip slide navigation if we're on slides with special content navigation
-        const specialNavigationSlides = [3, 4, 5];
+        const specialNavigationSlides = [3, 4]; // Removed slide 5 from special navigation
         if (specialNavigationSlides.includes(this.currentSlide) && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
             return; // Let the content handlers manage these keys
         }
@@ -924,7 +781,7 @@ class PresentationSlider {
             { number: 2, title: 'Workshop Agenda', content: 'Brief Evolution Modern AI Generate Test Cases DevOps Dungeon Gemini Security Testing Learning Development Trends Resources QA Next Steps' },
             { number: 3, title: 'Brief Evolution of Modern AI', content: 'ChatGPT hype 100 million users prompt engineering agentic AI n8n vive coding copilot context engineering RAG retrieval augmented generation' },
             { number: 4, title: 'Generate Test Cases Using AI - xCloud Workflow', content: 'xCloud workflow GitHub Project Manager Pull Request AI-powered test case generation Augment VS Code markdown template prerequisites developer QA synchronization' },
-            { number: 5, title: 'DevOps Dungeon - Level-Based Learning System', content: 'DevOps Dungeon level-based learning hands-on laboratory Docker containers AI-powered infrastructure automated provisioning technical implementation methodology real server environments task-based challenges submit validate progressive difficulty' },
+            { number: 5, title: 'DevOps Dungeon - Learning Platform', content: 'DevOps Dungeon interactive learning environment hands-on challenges real-world scenarios preview platform technical expertise infrastructure containerization deployment requirements' },
             { number: 6, title: 'Gemini - Underrated App', content: 'Google Gemini AI assistant code analysis test documentation bug investigation automation scripts' },
             { number: 7, title: 'AI in Security Testing', content: 'vulnerability detection penetration testing threat monitoring compliance automation Snyk Veracode Checkmarx Metasploit Burp Suite' },
             { number: 8, title: 'Learning & Next Steps', content: 'AI Learning Development personalized learning paths intelligent mentoring progress tracking next steps action items' }

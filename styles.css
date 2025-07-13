@@ -3074,154 +3074,88 @@ body {
         padding: 0.2rem 0.4rem;
     }
 
-    /* DevOps Dungeon responsive */
-    .devops-dungeon-slide {
+    /* DevOps Dungeon Simple responsive */
+    .devops-dungeon-simple-slide {
         padding: 1rem;
-        max-height: calc(100vh - 150px);
+        gap: 1.5rem;
+        max-height: calc(100vh - 120px);
+        padding-bottom: 2rem;
     }
 
-    .overview-header {
+    .overview-header-simple {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
 
-    .platform-info h3 {
-        font-size: 1.25rem;
+    .platform-info-simple h3 {
+        font-size: 1.5rem;
     }
 
-    .platform-info p {
+    .platform-info-simple p {
         font-size: 1rem;
     }
 
-    .learning-aspects-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        padding: 0;
-    }
-
-    .learning-aspect {
-        max-width: none;
-        width: 100%;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        background: var(--surface);
-        border-radius: 0.75rem;
-        border: 1px solid var(--border);
-    }
-
-    .aspect-marker-learning {
-        margin-bottom: 0;
-        width: 3rem;
-        height: 3rem;
+    .preview-button {
+        padding: 1rem 2rem;
         font-size: 1rem;
-        flex-shrink: 0;
     }
 
-    .aspect-info {
-        text-align: left;
-        flex: 1;
+    .preview-button-container {
+        margin: 0.5rem 0;
     }
 
-    .aspect-info h4 {
-        font-size: 1rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .learning-progress {
-        display: none;
-    }
-
-    .learning-details-panel.active {
-        max-height: 800px;
-        padding: 1.5rem;
-    }
-
-    .methodology-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .progression-levels {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .ai-features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .workflow-steps {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .workflow-arrow {
-        transform: rotate(90deg);
-    }
-
-    .architecture-visual {
-        gap: 0.75rem;
-    }
-
-    .layer-components {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .technical-features {
-        gap: 1rem;
-    }
-
-    .tech-feature {
+    .question-container {
         flex-direction: column;
         text-align: center;
-        gap: 0.75rem;
+        gap: 1rem;
         padding: 1rem;
     }
 
-    .learning-hint {
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 1rem;
+    .question-content h4 {
+        font-size: 1.125rem;
+        line-height: 1.3;
     }
 
-    .learning-hint .hint-section {
-        flex-direction: column;
-        gap: 0.25rem;
+    .question-hint {
+        font-size: 0.875rem;
     }
 
-    .learning-hint kbd {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.4rem;
+    .engagement-section {
+        margin-bottom: 1rem;
     }
 }
 
-/* DevOps Dungeon Slide Styles */
-.devops-dungeon-slide {
-    max-width: 1200px;
+/* DevOps Dungeon Simple Slide Styles */
+.devops-dungeon-simple-slide {
+    max-width: 1000px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 2rem 3rem 2rem;
     overflow-y: auto;
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 150px);
+    z-index: 10;
 }
 
-/* Platform Overview */
-.platform-overview {
-    margin-bottom: 3rem;
+/* Platform Overview Simple */
+.platform-overview-simple {
     opacity: 0;
     animation: slideInUp 0.8s ease-out 0.2s forwards;
+    flex-shrink: 0;
 }
 
-.overview-header {
+.overview-header-simple {
     display: flex;
     align-items: center;
     gap: 2rem;
     margin-bottom: 2rem;
+    text-align: center;
+    justify-content: center;
 }
 
-.platform-logo {
+.platform-logo-simple {
     width: 4rem;
     height: 4rem;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
@@ -3233,43 +3167,46 @@ body {
     font-size: 2rem;
     flex-shrink: 0;
     box-shadow: var(--shadow);
+    z-index: 10;
 }
 
-.platform-info {
+.platform-info-simple {
     flex: 1;
 }
 
-.platform-info h3 {
-    font-size: 1.5rem;
+.platform-info-simple h3 {
+    font-size: 1.75rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
-.platform-info p {
+.platform-info-simple p {
     color: var(--text-secondary);
     font-size: 1.125rem;
     line-height: 1.5;
     margin: 0;
 }
 
-.platform-screenshot {
+.platform-screenshot-simple {
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     background: var(--surface);
     border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    z-index: 10;
 }
 
-.screenshot-image {
+.screenshot-image-simple {
     width: 100%;
     height: auto;
     display: block;
     transition: var(--transition);
 }
 
-.screenshot-overlay {
+.screenshot-overlay-simple {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -3280,10 +3217,117 @@ body {
     font-size: 0.875rem;
     font-weight: 600;
     backdrop-filter: blur(10px);
+    z-index: 10;
 }
 
-.platform-screenshot:hover .screenshot-image {
+.platform-screenshot-simple:hover .screenshot-image-simple {
     transform: scale(1.02);
+}
+
+/* Preview Section */
+.preview-section {
+    text-align: center;
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out 0.6s forwards;
+    flex-shrink: 0;
+}
+
+.preview-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.preview-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    z-index: 10;
+    position: relative;
+}
+
+.preview-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+    color: white;
+}
+
+.preview-button i {
+    font-size: 1.25rem;
+}
+
+/* Engagement Section */
+.engagement-section {
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out 1s forwards;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+
+.question-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 1rem;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    z-index: 10;
+    position: relative;
+}
+
+.question-icon {
+    width: 3rem;
+    height: 3rem;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.question-content {
+    flex: 1;
+}
+
+.question-content h4 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.question-hint {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Ensure slide 5 is properly scrollable */
+.slide[data-slide="5"] {
+    overflow-y: auto;
+}
+
+.slide[data-slide="5"] .slide-content {
+    min-height: auto;
+    height: auto;
 }
 
 /* Learning System Navigation */
