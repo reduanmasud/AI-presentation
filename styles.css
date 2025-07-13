@@ -1657,6 +1657,588 @@ body {
     color: white;
 }
 
+/* AI Evolution Timeline Styles - Horizontal Layout */
+.ai-evolution-slide {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.evolution-subtitle {
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out 0.3s forwards;
+}
+
+.evolution-subtitle p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.ai-timeline-horizontal {
+    position: relative;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+}
+
+/* Horizontal Timeline Progress Line */
+.timeline-progress-horizontal {
+    position: absolute;
+    top: 4rem;
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    z-index: 1;
+}
+
+.progress-line-horizontal {
+    width: 100%;
+    height: 100%;
+    background: var(--border);
+    border-radius: 2px;
+}
+
+.progress-fill-horizontal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+    transition: width 3s ease-out;
+}
+
+/* Horizontal Milestones Container */
+.milestones-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding: 0 10%;
+    margin-bottom: 2rem;
+    z-index: 10;
+}
+
+.milestone-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease-out;
+    flex: 1;
+    max-width: 180px;
+}
+
+.milestone-horizontal.active .milestone-marker-horizontal {
+    background: var(--accent-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--accent-color);
+}
+
+/* Horizontal Milestone Marker */
+.milestone-marker-horizontal {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 10;
+    box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--border);
+    transition: all 0.3s ease-out;
+    margin-bottom: 1rem;
+}
+
+.milestone-horizontal:hover .milestone-marker-horizontal {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--primary-color);
+}
+
+.milestone-pulse-horizontal {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-out infinite;
+    opacity: 0;
+}
+
+.milestone-horizontal:hover .milestone-pulse-horizontal {
+    opacity: 1;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* Milestone Info */
+.milestone-info {
+    text-align: center;
+}
+
+.milestone-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.milestone-year-horizontal {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Expandable Details Panel */
+.milestone-details-panel {
+    background: var(--surface);
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    margin-top: 2rem;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+.milestone-details-panel.active {
+    max-height: 400px;
+    opacity: 1;
+    padding: 2rem;
+}
+
+.milestone-details-content {
+    display: none;
+}
+
+.milestone-details-content.active {
+    display: block;
+    animation: slideInUp 0.4s ease-out;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.details-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.details-year {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.details-summary {
+    margin-bottom: 1.5rem;
+}
+
+.details-summary p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    font-style: italic;
+    margin: 0;
+}
+
+.details-list ul {
+    list-style: none;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+}
+
+.details-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.details-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.details-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.details-stat .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.details-stat .stat-unit {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.details-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.details-tools .tool-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slideInUp 0.4s ease-out forwards;
+}
+
+.details-tools .tool-badge:nth-child(1) { animation-delay: 0.1s; }
+.details-tools .tool-badge:nth-child(2) { animation-delay: 0.2s; }
+.details-tools .tool-badge:nth-child(3) { animation-delay: 0.3s; }
+
+/* Evolution Summary Stats */
+.evolution-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--surface), rgba(37, 99, 235, 0.05));
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+}
+
+.evolution-stat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+.evolution-stat:nth-child(1) { animation-delay: 0.2s; }
+.evolution-stat:nth-child(2) { animation-delay: 0.4s; }
+.evolution-stat:nth-child(3) { animation-delay: 0.6s; }
+
+.evolution-stat .stat-icon {
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.evolution-stat .stat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.evolution-stat .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.evolution-stat .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-top: 0.25rem;
+}
+
+/* Timeline Hint */
+.timeline-hint {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2s forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.hint-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.timeline-hint i {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.timeline-hint kbd {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 0 0.125rem;
+}
+
+/* Timeline Animation Delays */
+.milestone-horizontal[data-milestone="1"] { animation-delay: 0.2s; }
+.milestone-horizontal[data-milestone="2"] { animation-delay: 0.4s; }
+.milestone-horizontal[data-milestone="3"] { animation-delay: 0.6s; }
+.milestone-horizontal[data-milestone="4"] { animation-delay: 0.8s; }
+.milestone-horizontal[data-milestone="5"] { animation-delay: 1.0s; }
+
+/* Responsive Design for Horizontal AI Timeline */
+@media (max-width: 1024px) {
+    .ai-timeline-horizontal {
+        padding: 1.5rem 0;
+    }
+
+    .milestones-container {
+        padding: 0 5%;
+    }
+
+    .milestone-horizontal {
+        max-width: 160px;
+    }
+
+    .milestone-info h4 {
+        font-size: 0.9rem;
+    }
+
+    .milestone-marker-horizontal {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.25rem;
+    }
+
+    .evolution-stats {
+        gap: 2rem;
+    }
+
+    .milestone-details-panel.active {
+        max-height: 450px;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Timeline - Stacked Layout */
+    .timeline-progress-horizontal {
+        display: none;
+    }
+
+    .milestones-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 0;
+    }
+
+    .milestone-horizontal {
+        flex-direction: row;
+        max-width: none;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--surface);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+    }
+
+    .milestone-marker-horizontal {
+        margin-bottom: 0;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    .milestone-info {
+        text-align: left;
+        flex: 1;
+    }
+
+    .milestone-info h4 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .evolution-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .evolution-stat {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .evolution-stat .stat-content {
+        align-items: center;
+    }
+
+    .milestone-details-panel.active {
+        max-height: 500px;
+        padding: 1.5rem;
+    }
+
+    .details-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .details-tools {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-evolution-slide {
+        padding: 1rem;
+    }
+
+    .evolution-subtitle p {
+        font-size: 1rem;
+    }
+
+    .milestone-horizontal {
+        padding: 0.75rem;
+    }
+
+    .milestone-marker-horizontal {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+
+    .milestone-info h4 {
+        font-size: 0.9rem;
+    }
+
+    .milestone-year-horizontal {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .milestone-details-panel.active {
+        max-height: 600px;
+        padding: 1rem;
+    }
+
+    .details-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .details-summary p {
+        font-size: 1.1rem;
+    }
+
+    .details-stat {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .details-stat .stat-number {
+        font-size: 2rem;
+    }
+
+    .evolution-stat .stat-number {
+        font-size: 2rem;
+    }
+
+    .timeline-hint {
+        font-size: 0.8rem;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .hint-section {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .timeline-hint kbd {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
 /* Demo link styling */
 .demo-link {
     text-align: center;

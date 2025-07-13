@@ -200,52 +200,234 @@
 
                 <!-- Slide 3: Brief Evolution of Modern AI -->
                 <section class="slide" data-slide="3">
-                    <div class="slide-content features-slide">
+                    <div class="slide-content ai-evolution-slide">
                         <h2 class="slide-title">Brief Evolution of Modern AI</h2>
-                        <div class="features-grid">
-                            <div class="feature-card" data-feature="traditional">
-                                <div class="feature-icon">
-                                    <i class="fas fa-history"></i>
+                        <div class="evolution-subtitle">
+                            <p>From ChatGPT hype to context engineering — the AI journey in QA & Testing</p>
+                        </div>
+
+                        <div class="ai-timeline-horizontal">
+                            <!-- Timeline Progress Line -->
+                            <div class="timeline-progress-horizontal">
+                                <div class="progress-line-horizontal"></div>
+                                <div class="progress-fill-horizontal" id="timelineProgressHorizontal"></div>
+                            </div>
+
+                            <!-- Horizontal Milestones Container -->
+                            <div class="milestones-container">
+                                <!-- Milestone 1: ChatGPT & The Hype -->
+                                <div class="milestone-horizontal" data-milestone="1" data-year="Late 2022">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-comments"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>ChatGPT & The Hype</h4>
+                                        <span class="milestone-year-horizontal">Late 2022</span>
+                                    </div>
                                 </div>
-                                <h3>Traditional Testing (Pre-AI)</h3>
-                                <p>Manual processes, rule-based automation, limited scalability</p>
-                                <div class="feature-demo">
-                                    <div class="timeline-bar" style="width: 30%; background: #dc3545;"></div>
+
+                                <!-- Milestone 2: Prompt Engineering Era -->
+                                <div class="milestone-horizontal" data-milestone="2" data-year="2023">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-brain"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>Prompt Engineering Era</h4>
+                                        <span class="milestone-year-horizontal">2023</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 3: Agentic AI & Tools -->
+                                <div class="milestone-horizontal" data-milestone="3" data-year="Late 2023">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-robot"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>Agentic AI & Tools like n8n</h4>
+                                        <span class="milestone-year-horizontal">Late 2023</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 4: "Vive Coding" Era -->
+                                <div class="milestone-horizontal" data-milestone="4" data-year="Mid 2024">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-code"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>"Vive Coding" Era</h4>
+                                        <span class="milestone-year-horizontal">Mid 2024</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 5: Context Engineering -->
+                                <div class="milestone-horizontal" data-milestone="5" data-year="Early 2025">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-database"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>Beyond Prompts: Context Engineering</h4>
+                                        <span class="milestone-year-horizontal">Early 2025</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="feature-card" data-feature="machine-learning">
-                                <div class="feature-icon">
-                                    <i class="fas fa-brain"></i>
+
+                            <!-- Expandable Details Panel -->
+                            <div class="milestone-details-panel" id="detailsPanel">
+                                <!-- Milestone 1 Details -->
+                                <div class="milestone-details-content" data-milestone="1">
+                                    <div class="details-header">
+                                        <h3>ChatGPT & The Hype</h3>
+                                        <span class="details-year">Late 2022</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"The world met ChatGPT!"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>Everyone was chatting with AI — writing poems, code, even love letters</li>
+                                            <li><strong>Fun fact:</strong> ChatGPT hit 100 million users faster than TikTok!</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">100M in 2 months</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3>Machine Learning Era</h3>
-                                <p>Pattern recognition, predictive analytics, smart test selection</p>
-                                <div class="feature-demo">
-                                    <div class="timeline-bar" style="width: 70%; background: #ffc107;"></div>
+
+                                <!-- Milestone 2 Details -->
+                                <div class="milestone-details-content" data-milestone="2">
+                                    <div class="details-header">
+                                        <h3>Prompt Engineering Era</h3>
+                                        <span class="details-year">2023</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"Good prompts = Good results"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>It became an art to coax the best answers from AI</li>
+                                            <li>Prompt jobs popped up everywhere!</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">Prompt Libraries</span>
+                                            <span class="tool-badge">Chain-of-Thought</span>
+                                            <span class="tool-badge">Few-Shot Learning</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="feature-card" data-feature="modern-ai">
-                                <div class="feature-icon">
-                                    <i class="fas fa-robot"></i>
+
+                                <!-- Milestone 3 Details -->
+                                <div class="milestone-details-content" data-milestone="3">
+                                    <div class="details-header">
+                                        <h3>Agentic AI & Tools like n8n</h3>
+                                        <span class="details-year">Late 2023</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"AI isn't just chat—it's acting like an agent"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>It can browse, write docs, trigger workflows</li>
+                                            <li>Tools like n8n connect AI to real apps and data</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">n8n</span>
+                                            <span class="tool-badge">AutoGPT</span>
+                                            <span class="tool-badge">LangChain</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3>Modern AI & LLMs</h3>
-                                <p>Natural language processing, autonomous testing, intelligent insights</p>
-                                <div class="feature-demo">
-                                    <div class="timeline-bar" style="width: 95%; background: #28a745;"></div>
+
+                                <!-- Milestone 4 Details -->
+                                <div class="milestone-details-content" data-milestone="4">
+                                    <div class="details-header">
+                                        <h3>"Vive Coding" Era</h3>
+                                        <span class="details-year">Mid 2024</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"Pair programming became pairing with AI"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>Devs started letting AI co-write code live</li>
+                                            <li>Copilot, Cody, Gemini… helping code faster</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">GitHub Copilot</span>
+                                            <span class="tool-badge">Cody</span>
+                                            <span class="tool-badge">Gemini Code</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 5 Details -->
+                                <div class="milestone-details-content" data-milestone="5">
+                                    <div class="details-header">
+                                        <h3>Beyond Prompts: Context Engineering</h3>
+                                        <span class="details-year">Early 2025</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"The future = context > prompt"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>Feed AI your data, docs, memory — it answers better</li>
+                                            <li>RAG (Retrieval-Augmented Generation) rules the stage</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">RAG Systems</span>
+                                            <span class="tool-badge">Vector DBs</span>
+                                            <span class="tool-badge">Context Windows</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ai-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">85%</span>
-                                <span class="stat-label">Faster Test Creation</span>
+
+                        <!-- Evolution Summary Stats -->
+                        <!-- <div class="evolution-stats">
+                            <div class="evolution-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="300">0</span>
+                                    <span class="stat-label">% Faster Development</span>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <span class="stat-number">60%</span>
-                                <span class="stat-label">Reduced Manual Effort</span>
+                            <div class="evolution-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="180">0</span>
+                                    <span class="stat-label">M+ AI Users Globally</span>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <span class="stat-number">40%</span>
-                                <span class="stat-label">Better Bug Detection</span>
+                            <div class="evolution-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="85">0</span>
+                                    <span class="stat-label">% QA Teams Using AI</span>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- Interactive Hint -->
+                        <div class="timeline-hint">
+                            <div class="hint-section">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Click any milestone to explore details</span>
+                            </div>
+                            <div class="hint-section">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Use <kbd>↑</kbd> <kbd>↓</kbd> keys to navigate timeline • <kbd>Esc</kbd> to close</span>
                             </div>
                         </div>
                     </div>

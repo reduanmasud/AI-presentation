@@ -252,7 +252,10 @@ class PresentationSlider {
             case 2: // Agenda slide
                 this.animateTimeline();
                 break;
-            case 3: // Features slide
+            case 3: // AI Evolution slide
+                this.animateAIEvolution();
+                break;
+            case 4: // Features slide
                 this.animateFeatures();
                 break;
         }
@@ -288,6 +291,178 @@ class PresentationSlider {
         });
     }
 
+    animateAIEvolution() {
+        // Animate horizontal timeline milestones
+        document.querySelectorAll('.milestone-horizontal').forEach((milestone, index) => {
+            setTimeout(() => {
+                milestone.style.opacity = '1';
+                milestone.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+
+        // Animate horizontal timeline progress fill
+        setTimeout(() => {
+            const progressFill = document.getElementById('timelineProgressHorizontal');
+            if (progressFill) {
+                progressFill.style.width = '100%';
+            }
+        }, 500);
+
+        // Animate counters in milestones and stats
+        setTimeout(() => {
+            this.animateCounters();
+        }, 1000);
+
+        // Setup horizontal timeline click interactions
+        this.setupHorizontalTimelineInteractions();
+    }
+
+    setupHorizontalTimelineInteractions() {
+        const detailsPanel = document.getElementById('detailsPanel');
+        let currentActiveMilestone = null;
+        const milestones = document.querySelectorAll('.milestone-horizontal');
+        const totalMilestones = milestones.length;
+
+        // Function to activate a specific milestone
+        const activateMilestone = (milestoneNumber) => {
+            // Remove active from all milestones and details
+            document.querySelectorAll('.milestone-horizontal').forEach(m => {
+                m.classList.remove('active');
+            });
+            document.querySelectorAll('.milestone-details-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Find and activate the target milestone
+            const targetMilestone = document.querySelector(`.milestone-horizontal[data-milestone="${milestoneNumber}"]`);
+            if (targetMilestone) {
+                targetMilestone.classList.add('active');
+                const targetContent = document.querySelector(`.milestone-details-content[data-milestone="${milestoneNumber}"]`);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+                detailsPanel.classList.add('active');
+                currentActiveMilestone = milestoneNumber;
+
+                // Animate counters in the details panel
+                setTimeout(() => {
+                    this.animateCounters();
+                }, 300);
+
+                // Add visual feedback
+                const marker = targetMilestone.querySelector('.milestone-marker-horizontal');
+                marker.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    marker.style.transform = '';
+                }, 150);
+            }
+        };
+
+        // Function to navigate to next/previous milestone
+        const navigateMilestone = (direction) => {
+            if (currentActiveMilestone === null) {
+                // If no milestone is active, start with the first one
+                activateMilestone('1');
+                return;
+            }
+
+            const currentNumber = parseInt(currentActiveMilestone);
+            let nextNumber;
+
+            if (direction === 'next') {
+                nextNumber = currentNumber < totalMilestones ? currentNumber + 1 : 1; // Loop to first
+            } else {
+                nextNumber = currentNumber > 1 ? currentNumber - 1 : totalMilestones; // Loop to last
+            }
+
+            activateMilestone(nextNumber.toString());
+        };
+
+        // Click handlers for milestones
+        milestones.forEach(milestone => {
+            milestone.addEventListener('click', () => {
+                const milestoneNumber = milestone.dataset.milestone;
+                const isCurrentlyActive = milestone.classList.contains('active');
+
+                if (isCurrentlyActive) {
+                    // Close details panel if clicking the same milestone
+                    milestone.classList.remove('active');
+                    document.querySelectorAll('.milestone-details-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    detailsPanel.classList.remove('active');
+                    currentActiveMilestone = null;
+                } else {
+                    activateMilestone(milestoneNumber);
+                }
+            });
+
+            // Keyboard accessibility for individual milestones
+            milestone.setAttribute('tabindex', '0');
+            milestone.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    milestone.click();
+                }
+            });
+        });
+
+        // Global keyboard navigation for timeline (only when on slide 3)
+        const handleTimelineKeyboard = (e) => {
+            // Only handle timeline navigation when on slide 3
+            if (this.currentSlide !== 3) return;
+
+            switch(e.key) {
+                case 'ArrowUp':
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigateMilestone('previous');
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navigateMilestone('next');
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    if (currentActiveMilestone) {
+                        // Close active milestone
+                        document.querySelectorAll('.milestone-horizontal').forEach(m => {
+                            m.classList.remove('active');
+                        });
+                        document.querySelectorAll('.milestone-details-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        detailsPanel.classList.remove('active');
+                        currentActiveMilestone = null;
+                    }
+                    break;
+            }
+        };
+
+        // Add the timeline keyboard handler
+        document.addEventListener('keydown', handleTimelineKeyboard);
+
+        // Store reference for cleanup if needed
+        this.timelineKeyboardHandler = handleTimelineKeyboard;
+
+        // Close details panel when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.milestone-horizontal') && !e.target.closest('.milestone-details-panel')) {
+                if (currentActiveMilestone) {
+                    document.querySelectorAll('.milestone-horizontal').forEach(m => {
+                        m.classList.remove('active');
+                    });
+                    document.querySelectorAll('.milestone-details-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    detailsPanel.classList.remove('active');
+                    currentActiveMilestone = null;
+                }
+            }
+        });
+    }
+
     animateFeatures() {
         document.querySelectorAll('.feature-card').forEach((card, index) => {
             setTimeout(() => {
@@ -298,17 +473,34 @@ class PresentationSlider {
     }
 
     handleKeyboard(e) {
+        // Skip slide navigation if we're on slide 3 and using Up/Down for timeline navigation
+        if (this.currentSlide === 3 && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+            return; // Let the timeline handler manage these keys
+        }
+
         switch(e.key) {
             case 'ArrowLeft':
-            case 'ArrowUp':
                 e.preventDefault();
                 this.previousSlide();
                 break;
             case 'ArrowRight':
-            case 'ArrowDown':
             case ' ':
                 e.preventDefault();
                 this.nextSlide();
+                break;
+            case 'ArrowUp':
+                // Only handle for non-slide-3 or when no timeline is active
+                if (this.currentSlide !== 3) {
+                    e.preventDefault();
+                    this.previousSlide();
+                }
+                break;
+            case 'ArrowDown':
+                // Only handle for non-slide-3 or when no timeline is active
+                if (this.currentSlide !== 3) {
+                    e.preventDefault();
+                    this.nextSlide();
+                }
                 break;
             case 'Home':
                 e.preventDefault();
@@ -402,7 +594,7 @@ class PresentationSlider {
         const slides = [
             { number: 1, title: 'AI in QA & Security Testing', content: 'AI QA Security Testing Practical Applications Reduan Masud Arafat xCloud robot shield bug' },
             { number: 2, title: 'Workshop Agenda', content: 'Brief Evolution Modern AI Generate Test Cases DevOps Dungeon Gemini Security Testing Learning Development Trends Resources QA Next Steps' },
-            { number: 3, title: 'Brief Evolution of Modern AI', content: 'Traditional Testing Machine Learning Era Modern AI LLMs faster test creation reduced manual effort better bug detection' },
+            { number: 3, title: 'Brief Evolution of Modern AI', content: 'ChatGPT hype 100 million users prompt engineering agentic AI n8n vive coding copilot context engineering RAG retrieval augmented generation' },
             { number: 4, title: 'Generate Test Cases Using AI', content: 'AI-powered test case generation ChatGPT GitHub Copilot Testim Applitools automated creation comprehensive coverage edge case detection' },
             { number: 5, title: 'DevOps Dungeon App', content: 'DevOps Dungeon gamified learning platform interactive quests achievement system team collaboration progress tracking' },
             { number: 6, title: 'Gemini - Underrated App', content: 'Google Gemini AI assistant code analysis test documentation bug investigation automation scripts' },
