@@ -149,6 +149,30 @@ body {
     max-width: 1200px;
     width: 100%;
     text-align: center;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    scroll-behavior: smooth;
+    padding-bottom: 3rem;
+}
+
+.slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.slide-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.slide-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.slide-content::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 
 .slide-title {
@@ -1401,33 +1425,9 @@ body {
     font-size: 1.25rem;
 }
 
-/* Gemini showcase */
-.gemini-showcase {
-    max-width: 800px;
-    margin: 0 auto;
-}
 
-.gemini-header {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, #4285f4, #34a853);
-    color: white;
-    border-radius: 1rem;
-}
 
-.gemini-logo {
-    width: 4rem;
-    height: 4rem;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-}
+
 
 .gemini-capabilities {
     display: grid;
@@ -1492,6 +1492,14 @@ body {
     border-radius: 1rem;
     padding: 2rem;
     border: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+}
+
+.gemini-showcase {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
 }
 
 .gallery-container {
@@ -1540,7 +1548,33 @@ body {
 .screenshot-caption p {
     font-size: 0.9rem;
     opacity: 0.9;
-    margin: 0;
+    margin: 0 0 1rem 0;
+}
+
+.demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.demo-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.demo-link i {
+    font-size: 0.75rem;
 }
 
 .gallery-nav {
@@ -1551,7 +1585,7 @@ body {
     margin-top: 1.5rem;
 }
 
-.nav-btn {
+.gallery-nav-btn {
     background: var(--primary-color);
     color: white;
     border: none;
@@ -1566,12 +1600,12 @@ body {
     font-size: 0.9rem;
 }
 
-.nav-btn:hover {
+.gallery-nav-btn:hover {
     background: var(--primary-dark);
     transform: scale(1.1);
 }
 
-.nav-btn:disabled {
+.gallery-nav-btn:disabled {
     background: var(--muted);
     cursor: not-allowed;
     transform: none;
@@ -1582,7 +1616,7 @@ body {
     gap: 0.5rem;
 }
 
-.dot {
+.gallery-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -1591,12 +1625,12 @@ body {
     transition: all 0.3s ease;
 }
 
-.dot.active {
+.gallery-dot.active {
     background: var(--primary-color);
     transform: scale(1.2);
 }
 
-.dot:hover {
+.gallery-dot:hover {
     background: var(--primary-light);
 }
 
@@ -1622,12 +1656,50 @@ body {
     transition: transform 0.3s ease;
 }
 
-.feature-highlight:hover {
-    transform: translateY(-2px);
+/* Project Link Section */
+.project-link-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    clear: both;
 }
 
-.feature-highlight i {
-    font-size: 1rem;
+.project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #24292e, #586069);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(36, 41, 46, 0.3);
+    border: 2px solid transparent;
+}
+
+.project-link-btn:hover {
+    background: linear-gradient(135deg, #2f363d, #6a737d);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(36, 41, 46, 0.4);
+    border-color: #f0f6fc;
+}
+
+.project-link-btn:active {
+    transform: translateY(0);
+}
+
+.project-link-btn i.fab {
+    font-size: 1.25rem;
+}
+
+.project-link-btn i.fas {
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 @keyframes fadeIn {
@@ -3068,11 +3140,7 @@ body {
         gap: 1rem;
     }
 
-    .gemini-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
+
 
     .security-stats {
         flex-direction: column;
@@ -3109,15 +3177,32 @@ body {
         font-size: 0.85rem;
     }
 
+    .demo-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        gap: 0.4rem;
+    }
+
     .gallery-nav {
         gap: 0.75rem;
         margin-top: 1rem;
     }
 
-    .nav-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 0.8rem;
+    .gallery-nav-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 0.9rem;
+        /* Better touch targets for mobile */
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .gallery-dot {
+        width: 16px;
+        height: 16px;
+        /* Better touch targets for mobile */
+        min-width: 16px;
+        min-height: 16px;
     }
 
     .gemini-features {
@@ -3125,9 +3210,27 @@ body {
         margin-top: 1.5rem;
     }
 
-    .feature-highlight {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
+    /* Project Link Mobile Styles */
+    .project-link-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        gap: 0.5rem;
+    }
+
+    .project-link-btn i.fab {
+        font-size: 1.1rem;
+    }
+
+    /* Improve slide content scrolling on mobile */
+    .slide-content {
+        max-height: calc(100vh - 160px);
+        padding-right: 5px;
+        padding-bottom: 4rem;
+    }
+
+    /* Ensure Gemini slide content is properly scrollable */
+    .slide[data-slide="6"] .slide-content {
+        max-height: calc(100vh - 140px);
     }
 
     .security-grid {

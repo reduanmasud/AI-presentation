@@ -890,13 +890,19 @@ window.addEventListener('resize', () => {
 let currentScreenshotIndex = 1;
 const totalScreenshots = 3;
 
-function changeScreenshot(direction) {
+function changeScreenshot(direction, event) {
+    // Prevent event bubbling to avoid interfering with main navigation
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
     const currentItem = document.querySelector('.screenshot-item.active');
-    const currentDot = document.querySelector('.dot.active');
+    const currentDot = document.querySelector('.gallery-dot.active');
 
     // Remove active class
-    currentItem.classList.remove('active');
-    currentDot.classList.remove('active');
+    if (currentItem) currentItem.classList.remove('active');
+    if (currentDot) currentDot.classList.remove('active');
 
     // Calculate new index
     currentScreenshotIndex += direction;
@@ -910,7 +916,7 @@ function changeScreenshot(direction) {
 
     // Add active class to new items
     const newItem = document.querySelector(`[data-screenshot="${currentScreenshotIndex}"]`);
-    const newDot = document.querySelectorAll('.dot')[currentScreenshotIndex - 1];
+    const newDot = document.querySelectorAll('.gallery-dot')[currentScreenshotIndex - 1];
 
     if (newItem && newDot) {
         newItem.classList.add('active');
@@ -921,9 +927,15 @@ function changeScreenshot(direction) {
     updateGalleryNavigation();
 }
 
-function currentScreenshot(index) {
+function currentScreenshot(index, event) {
+    // Prevent event bubbling to avoid interfering with main navigation
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
     const currentItem = document.querySelector('.screenshot-item.active');
-    const currentDot = document.querySelector('.dot.active');
+    const currentDot = document.querySelector('.gallery-dot.active');
 
     // Remove active class
     if (currentItem) currentItem.classList.remove('active');
@@ -934,7 +946,7 @@ function currentScreenshot(index) {
 
     // Add active class to new items
     const newItem = document.querySelector(`[data-screenshot="${currentScreenshotIndex}"]`);
-    const newDot = document.querySelectorAll('.dot')[currentScreenshotIndex - 1];
+    const newDot = document.querySelectorAll('.gallery-dot')[currentScreenshotIndex - 1];
 
     if (newItem && newDot) {
         newItem.classList.add('active');
@@ -946,8 +958,8 @@ function currentScreenshot(index) {
 }
 
 function updateGalleryNavigation() {
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const prevBtn = document.querySelector('.gallery-prev-btn');
+    const nextBtn = document.querySelector('.gallery-next-btn');
 
     if (prevBtn && nextBtn) {
         // Enable/disable buttons based on current position
