@@ -759,34 +759,62 @@
                                     <p>Advanced AI Assistant for QA & Testing</p>
                                 </div>
                             </div>
-                            <div class="gemini-capabilities">
-                                <div class="capability-card">
-                                    <i class="fas fa-code"></i>
-                                    <h4>Code Analysis</h4>
-                                    <p>Intelligent code review and bug detection</p>
+
+                            <!-- App Screenshots Gallery -->
+                            <div class="gemini-gallery">
+                                <div class="gallery-container">
+                                    <div class="screenshot-item active" data-screenshot="1">
+                                        <img src="gemini-app-01.png" alt="Gemini App - Main Interface" />
+                                        <div class="screenshot-caption">
+                                            <h4>Main Interface</h4>
+                                            <p>Clean, intuitive design for AI-powered testing assistance</p>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot-item" data-screenshot="2">
+                                        <img src="gemini-app-02.png" alt="Gemini App - Test Generation" />
+                                        <div class="screenshot-caption">
+                                            <h4>Test Case Generation</h4>
+                                            <p>Automated test case creation from requirements</p>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot-item" data-screenshot="3">
+                                        <img src="gemini-app-03.png" alt="Gemini App - Code Analysis" />
+                                        <div class="screenshot-caption">
+                                            <h4>Code Analysis</h4>
+                                            <p>Intelligent code review and bug detection</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="capability-card">
-                                    <i class="fas fa-file-alt"></i>
-                                    <h4>Test Documentation</h4>
-                                    <p>Auto-generate comprehensive test plans</p>
-                                </div>
-                                <div class="capability-card">
-                                    <i class="fas fa-search"></i>
-                                    <h4>Bug Investigation</h4>
-                                    <p>Root cause analysis and solution suggestions</p>
-                                </div>
-                                <div class="capability-card">
-                                    <i class="fas fa-robot"></i>
-                                    <h4>Test Automation</h4>
-                                    <p>Generate automation scripts from requirements</p>
+
+                                <!-- Gallery Navigation -->
+                                <div class="gallery-nav">
+                                    <button class="nav-btn prev-btn" onclick="changeScreenshot(-1)">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <div class="gallery-dots">
+                                        <span class="dot active" onclick="currentScreenshot(1)"></span>
+                                        <span class="dot" onclick="currentScreenshot(2)"></span>
+                                        <span class="dot" onclick="currentScreenshot(3)"></span>
+                                    </div>
+                                    <button class="nav-btn next-btn" onclick="changeScreenshot(1)">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="gemini-demo">
-                                <div class="demo-prompt">
-                                    <strong>Example Prompt:</strong> "Generate test cases for a login form with email validation, password strength requirements, and remember me functionality"
+
+                            <!-- Key Features -->
+                            <div class="gemini-features">
+                                <div class="feature-highlight">
+                                    <i class="fas fa-magic"></i>
+                                    <span>AI-Powered Test Generation</span>
                                 </div>
-                                <div class="demo-response">
-                                    <strong>Gemini Response:</strong> Comprehensive test suite with positive/negative scenarios, edge cases, and security considerations
+                                <div class="feature-highlight">
+                                    <i class="fas fa-code"></i>
+                                    <span>Smart Code Analysis</span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Security Testing Integration</span>
                                 </div>
                             </div>
                         </div>

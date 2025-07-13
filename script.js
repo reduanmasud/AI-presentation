@@ -885,3 +885,92 @@ window.addEventListener('resize', () => {
         window.slider.goToSlide(window.slider.currentSlide);
     }
 });
+
+// Gemini Gallery Functionality
+let currentScreenshotIndex = 1;
+const totalScreenshots = 3;
+
+function changeScreenshot(direction) {
+    const currentItem = document.querySelector('.screenshot-item.active');
+    const currentDot = document.querySelector('.dot.active');
+
+    // Remove active class
+    currentItem.classList.remove('active');
+    currentDot.classList.remove('active');
+
+    // Calculate new index
+    currentScreenshotIndex += direction;
+
+    // Handle wrapping
+    if (currentScreenshotIndex > totalScreenshots) {
+        currentScreenshotIndex = 1;
+    } else if (currentScreenshotIndex < 1) {
+        currentScreenshotIndex = totalScreenshots;
+    }
+
+    // Add active class to new items
+    const newItem = document.querySelector(`[data-screenshot="${currentScreenshotIndex}"]`);
+    const newDot = document.querySelectorAll('.dot')[currentScreenshotIndex - 1];
+
+    if (newItem && newDot) {
+        newItem.classList.add('active');
+        newDot.classList.add('active');
+    }
+
+    // Update navigation buttons
+    updateGalleryNavigation();
+}
+
+function currentScreenshot(index) {
+    const currentItem = document.querySelector('.screenshot-item.active');
+    const currentDot = document.querySelector('.dot.active');
+
+    // Remove active class
+    if (currentItem) currentItem.classList.remove('active');
+    if (currentDot) currentDot.classList.remove('active');
+
+    // Set new index
+    currentScreenshotIndex = index;
+
+    // Add active class to new items
+    const newItem = document.querySelector(`[data-screenshot="${currentScreenshotIndex}"]`);
+    const newDot = document.querySelectorAll('.dot')[currentScreenshotIndex - 1];
+
+    if (newItem && newDot) {
+        newItem.classList.add('active');
+        newDot.classList.add('active');
+    }
+
+    // Update navigation buttons
+    updateGalleryNavigation();
+}
+
+function updateGalleryNavigation() {
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (prevBtn && nextBtn) {
+        // Enable/disable buttons based on current position
+        prevBtn.disabled = currentScreenshotIndex === 1;
+        nextBtn.disabled = currentScreenshotIndex === totalScreenshots;
+    }
+}
+
+// Auto-advance gallery (optional)
+function startGalleryAutoPlay() {
+    setInterval(() => {
+        if (currentScreenshotIndex < totalScreenshots) {
+            changeScreenshot(1);
+        } else {
+            currentScreenshot(1);
+        }
+    }, 5000); // Change every 5 seconds
+}
+
+// Initialize gallery when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    updateGalleryNavigation();
+
+    // Optional: Start auto-play
+    // startGalleryAutoPlay();
+});

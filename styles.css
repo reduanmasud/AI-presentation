@@ -1485,6 +1485,162 @@ body {
     border-left: 4px solid var(--accent-color);
 }
 
+/* Gemini Gallery Styles */
+.gemini-gallery {
+    margin: 2rem 0;
+    background: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+}
+
+.gallery-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.screenshot-item {
+    display: none;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screenshot-item.active {
+    display: block;
+}
+
+.screenshot-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.75rem;
+}
+
+.screenshot-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.screenshot-caption h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.screenshot-caption p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.nav-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.gallery-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background: var(--primary-light);
+}
+
+.gemini-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border-radius: 2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 16px rgba(66, 133, 244, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.feature-highlight:hover {
+    transform: translateY(-2px);
+}
+
+.feature-highlight i {
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* Security grid */
 .security-grid {
     display: grid;
@@ -2929,6 +3085,49 @@ body {
 
     .gemini-capabilities {
         grid-template-columns: 1fr;
+    }
+
+    /* Gemini Gallery Mobile Styles */
+    .gemini-gallery {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .gallery-container {
+        max-width: 100%;
+    }
+
+    .screenshot-caption {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .screenshot-caption h4 {
+        font-size: 1.1rem;
+    }
+
+    .screenshot-caption p {
+        font-size: 0.85rem;
+    }
+
+    .gallery-nav {
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+
+    .gemini-features {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .feature-highlight {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
     }
 
     .security-grid {
