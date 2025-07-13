@@ -3073,4 +3073,808 @@ body {
         font-size: 0.7rem;
         padding: 0.2rem 0.4rem;
     }
+
+    /* DevOps Dungeon responsive */
+    .devops-dungeon-slide {
+        padding: 1rem;
+        max-height: calc(100vh - 150px);
+    }
+
+    .overview-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .platform-info h3 {
+        font-size: 1.25rem;
+    }
+
+    .platform-info p {
+        font-size: 1rem;
+    }
+
+    .learning-aspects-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 0;
+    }
+
+    .learning-aspect {
+        max-width: none;
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--surface);
+        border-radius: 0.75rem;
+        border: 1px solid var(--border);
+    }
+
+    .aspect-marker-learning {
+        margin-bottom: 0;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .aspect-info {
+        text-align: left;
+        flex: 1;
+    }
+
+    .aspect-info h4 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .learning-progress {
+        display: none;
+    }
+
+    .learning-details-panel.active {
+        max-height: 800px;
+        padding: 1.5rem;
+    }
+
+    .methodology-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .progression-levels {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-steps {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .workflow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .architecture-visual {
+        gap: 0.75rem;
+    }
+
+    .layer-components {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .technical-features {
+        gap: 1rem;
+    }
+
+    .tech-feature {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .learning-hint {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .learning-hint .hint-section {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .learning-hint kbd {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
 }
+
+/* DevOps Dungeon Slide Styles */
+.devops-dungeon-slide {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Platform Overview */
+.platform-overview {
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out 0.2s forwards;
+}
+
+.overview-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.platform-logo {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    flex-shrink: 0;
+    box-shadow: var(--shadow);
+}
+
+.platform-info {
+    flex: 1;
+}
+
+.platform-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.platform-info p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.platform-screenshot {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.screenshot-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+.screenshot-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(37, 99, 235, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.platform-screenshot:hover .screenshot-image {
+    transform: scale(1.02);
+}
+
+/* Learning System Navigation */
+.learning-navigation {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.learning-progress {
+    position: absolute;
+    top: 2rem;
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    z-index: 1;
+}
+
+.progress-line-learning {
+    width: 100%;
+    height: 100%;
+    background: var(--border);
+    border-radius: 2px;
+}
+
+.progress-fill-learning {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+    transition: width 2s ease-out;
+}
+
+.learning-aspects-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding: 0 10%;
+    margin-bottom: 2rem;
+}
+
+.learning-aspect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease-out;
+    flex: 1;
+    max-width: 200px;
+}
+
+.learning-aspect.active .aspect-marker-learning {
+    background: var(--accent-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--accent-color);
+}
+
+.aspect-marker-learning {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    z-index: 10;
+    box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--border);
+    transition: all 0.3s ease-out;
+    margin-bottom: 1rem;
+}
+
+.learning-aspect:hover .aspect-marker-learning {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px var(--background), 0 0 0 8px var(--primary-color);
+}
+
+.aspect-number {
+    position: absolute;
+    bottom: -0.25rem;
+    right: -0.25rem;
+    background: var(--accent-color);
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.aspect-info {
+    text-align: center;
+}
+
+.aspect-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.aspect-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Learning Details Panel */
+.learning-details-panel {
+    background: var(--surface);
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    margin-top: 2rem;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+.learning-details-panel.active {
+    max-height: 1000px;
+    opacity: 1;
+    padding: 2rem;
+}
+
+.learning-details-content {
+    display: none;
+}
+
+.learning-details-content.active {
+    display: block;
+    animation: slideInUp 0.4s ease-out;
+}
+
+.details-header-learning {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.details-header-learning h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+}
+
+.details-badge-learning {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Methodology Content */
+.methodology-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.methodology-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.methodology-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.methodology-icon {
+    width: 3rem;
+    height: 3rem;
+    background: var(--primary-color);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.methodology-text h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.methodology-text p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Level Progression */
+.level-progression {
+    background: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+}
+
+.level-progression h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.progression-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.level-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.level-item.beginner {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.level-item.intermediate {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.level-item.advanced {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.level-item.expert {
+    background: rgba(147, 51, 234, 0.1);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+}
+
+.level-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.level-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.level-item.beginner .level-number {
+    color: #22c55e;
+}
+
+.level-item.intermediate .level-number {
+    color: #f59e0b;
+}
+
+.level-item.advanced .level-number {
+    color: #ef4444;
+}
+
+.level-item.expert .level-number {
+    color: #9333ea;
+}
+
+.level-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.level-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* AI Infrastructure */
+.ai-infrastructure {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ai-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.ai-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.ai-feature:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.ai-feature-icon {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.ai-feature-content h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.ai-feature-content p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* AI Workflow */
+.ai-workflow {
+    background: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+}
+
+.ai-workflow h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.workflow-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    min-width: 120px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.workflow-step:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.step-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.workflow-step span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.workflow-arrow {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Technical Implementation */
+.technical-implementation {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.architecture-diagram {
+    background: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+}
+
+.architecture-diagram h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.architecture-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.architecture-layer {
+    background: var(--background);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.architecture-layer:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.layer-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.layer-components {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.component {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.technical-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tech-feature {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--background);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.tech-feature:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.tech-feature i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.tech-content h6 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.tech-content p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Learning Hint */
+.learning-hint {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2s forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.learning-hint .hint-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.learning-hint i {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.learning-hint kbd {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 0 0.125rem;
+}
+
+/* Learning Animation Delays */
+.learning-aspect[data-aspect="1"] { animation-delay: 0.2s; }
+.learning-aspect[data-aspect="2"] { animation-delay: 0.4s; }
+.learning-aspect[data-aspect="3"] { animation-delay: 0.6s; }

@@ -691,58 +691,301 @@
                     </div>
                 </section>
 
-                <!-- Slide 5: DevOps Dungeon - An Interesting App -->
+                <!-- Slide 5: DevOps Dungeon - Level-Based Learning System -->
                 <section class="slide" data-slide="5">
-                    <div class="slide-content data-slide">
-                        <h2 class="slide-title">DevOps Dungeon - An Interesting App</h2>
-                        <div class="app-showcase">
-                            <div class="app-header">
-                                <div class="app-icon">
+                    <div class="slide-content devops-dungeon-slide">
+                        <h2 class="slide-title">DevOps Dungeon - Level-Based Learning System</h2>
+
+                        <!-- Platform Overview -->
+                        <div class="platform-overview">
+                            <div class="overview-header">
+                                <div class="platform-logo">
                                     <i class="fas fa-dungeon"></i>
                                 </div>
-                                <div class="app-info">
-                                    <h3>DevOps Dungeon</h3>
-                                    <p>Gamified DevOps Learning Platform</p>
+                                <div class="platform-info">
+                                    <h3>Serious Hands-On Laboratory Learning Environment</h3>
+                                    <p>Level-based progression structure for comprehensive DevOps skill development</p>
                                 </div>
                             </div>
-                            <div class="app-features">
-                                <div class="feature-item">
-                                    <i class="fas fa-gamepad"></i>
-                                    <span>Interactive Learning Quests</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-trophy"></i>
-                                    <span>Achievement System</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-users"></i>
-                                    <span>Team Collaboration</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-chart-line"></i>
-                                    <span>Progress Tracking</span>
+                            <div class="platform-screenshot">
+                                <img src="devops-dungeon.png" alt="DevOps Dungeon Interface" class="screenshot-image">
+                                <div class="screenshot-overlay">
+                                    <div class="overlay-text">Live Platform Interface</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="metrics-container">
-                            <div class="metric-card">
-                                <div class="metric-number" data-target="78">0</div>
-                                <div class="metric-label">Learning Efficiency</div>
-                                <div class="metric-unit">%</div>
+
+                        <!-- Learning System Navigation -->
+                        <div class="learning-navigation">
+                            <div class="learning-progress">
+                                <div class="progress-line-learning"></div>
+                                <div class="progress-fill-learning" id="learningProgress"></div>
                             </div>
-                            <div class="metric-card">
-                                <div class="metric-number" data-target="45">0</div>
-                                <div class="metric-label">Skill Modules</div>
-                                <div class="metric-unit">+</div>
-                            </div>
-                            <div class="metric-card">
-                                <div class="metric-number" data-target="92">0</div>
-                                <div class="metric-label">User Satisfaction</div>
-                                <div class="metric-unit">%</div>
+
+                            <div class="learning-aspects-container">
+                                <!-- Aspect 1: Learning Methodology -->
+                                <div class="learning-aspect" data-aspect="1">
+                                    <div class="aspect-marker-learning">
+                                        <i class="fas fa-flask"></i>
+                                        <span class="aspect-number">1</span>
+                                    </div>
+                                    <div class="aspect-info">
+                                        <h4>Learning Methodology</h4>
+                                        <span class="aspect-description">Hands-On Lab Approach</span>
+                                    </div>
+                                </div>
+
+                                <!-- Aspect 2: AI-Powered Infrastructure -->
+                                <div class="learning-aspect" data-aspect="2">
+                                    <div class="aspect-marker-learning">
+                                        <i class="fas fa-brain"></i>
+                                        <span class="aspect-number">2</span>
+                                    </div>
+                                    <div class="aspect-info">
+                                        <h4>AI-Powered Infrastructure</h4>
+                                        <span class="aspect-description">Fully Automated System</span>
+                                    </div>
+                                </div>
+
+                                <!-- Aspect 3: Technical Implementation -->
+                                <div class="learning-aspect" data-aspect="3">
+                                    <div class="aspect-marker-learning">
+                                        <i class="fab fa-docker"></i>
+                                        <span class="aspect-number">3</span>
+                                    </div>
+                                    <div class="aspect-info">
+                                        <h4>Technical Implementation</h4>
+                                        <span class="aspect-description">Docker-Based Architecture</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="demo-link">
-                            <button class="demo-button">Explore DevOps Dungeon</button>
+
+                        <!-- Expandable Details Panel -->
+                        <div class="learning-details-panel" id="learningDetailsPanel">
+                            <!-- Aspect 1 Content -->
+                            <div class="learning-details-content" data-aspect="1">
+                                <div class="details-header-learning">
+                                    <h3>Learning Methodology</h3>
+                                    <span class="details-badge-learning">Hands-On Labs</span>
+                                </div>
+                                <div class="methodology-content">
+                                    <div class="methodology-grid">
+                                        <div class="methodology-item">
+                                            <div class="methodology-icon">
+                                                <i class="fas fa-server"></i>
+                                            </div>
+                                            <div class="methodology-text">
+                                                <h5>Real Server Environments</h5>
+                                                <p>Work with actual server configurations and production-like scenarios</p>
+                                            </div>
+                                        </div>
+                                        <div class="methodology-item">
+                                            <div class="methodology-icon">
+                                                <i class="fas fa-tasks"></i>
+                                            </div>
+                                            <div class="methodology-text">
+                                                <h5>Task-Based Challenges</h5>
+                                                <p>Complete specific objectives to progress through difficulty levels</p>
+                                            </div>
+                                        </div>
+                                        <div class="methodology-item">
+                                            <div class="methodology-icon">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <div class="methodology-text">
+                                                <h5>Submit-and-Validate System</h5>
+                                                <p>Automated verification of completed tasks for level advancement</p>
+                                            </div>
+                                        </div>
+                                        <div class="methodology-item">
+                                            <div class="methodology-icon">
+                                                <i class="fas fa-chart-line"></i>
+                                            </div>
+                                            <div class="methodology-text">
+                                                <h5>Progressive Difficulty</h5>
+                                                <p>Scaling complexity from beginner to advanced DevOps concepts</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="level-progression">
+                                        <h5>Level Progression System</h5>
+                                        <div class="progression-levels">
+                                            <div class="level-item beginner">
+                                                <span class="level-number">1-3</span>
+                                                <span class="level-name">Beginner</span>
+                                                <span class="level-desc">Basic concepts & tools</span>
+                                            </div>
+                                            <div class="level-item intermediate">
+                                                <span class="level-number">4-7</span>
+                                                <span class="level-name">Intermediate</span>
+                                                <span class="level-desc">Integration & automation</span>
+                                            </div>
+                                            <div class="level-item advanced">
+                                                <span class="level-number">8-12</span>
+                                                <span class="level-name">Advanced</span>
+                                                <span class="level-desc">Complex architectures</span>
+                                            </div>
+                                            <div class="level-item expert">
+                                                <span class="level-number">13+</span>
+                                                <span class="level-name">Expert</span>
+                                                <span class="level-desc">Production scenarios</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Aspect 2 Content -->
+                            <div class="learning-details-content" data-aspect="2">
+                                <div class="details-header-learning">
+                                    <h3>AI-Powered Infrastructure</h3>
+                                    <span class="details-badge-learning">Fully Automated</span>
+                                </div>
+                                <div class="ai-infrastructure">
+                                    <div class="ai-features-grid">
+                                        <div class="ai-feature">
+                                            <div class="ai-feature-icon">
+                                                <i class="fas fa-magic"></i>
+                                            </div>
+                                            <div class="ai-feature-content">
+                                                <h5>No External Server Setup</h5>
+                                                <p>Zero infrastructure management required - everything is handled automatically</p>
+                                            </div>
+                                        </div>
+                                        <div class="ai-feature">
+                                            <div class="ai-feature-icon">
+                                                <i class="fas fa-cogs"></i>
+                                            </div>
+                                            <div class="ai-feature-content">
+                                                <h5>Automated Environment Provisioning</h5>
+                                                <p>Dynamic creation of isolated learning environments for each challenge</p>
+                                            </div>
+                                        </div>
+                                        <div class="ai-feature">
+                                            <div class="ai-feature-icon">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <div class="ai-feature-content">
+                                                <h5>Secure Isolated Environments</h5>
+                                                <p>Each learner gets a completely isolated, secure container environment</p>
+                                            </div>
+                                        </div>
+                                        <div class="ai-feature">
+                                            <div class="ai-feature-icon">
+                                                <i class="fas fa-robot"></i>
+                                            </div>
+                                            <div class="ai-feature-content">
+                                                <h5>AI-Driven Challenge Generation</h5>
+                                                <p>Intelligent creation of challenges, validation, and personalized feedback</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ai-workflow">
+                                        <h5>AI Automation Workflow</h5>
+                                        <div class="workflow-steps">
+                                            <div class="workflow-step">
+                                                <div class="step-icon"><i class="fas fa-play"></i></div>
+                                                <span>Challenge Request</span>
+                                            </div>
+                                            <div class="workflow-arrow">→</div>
+                                            <div class="workflow-step">
+                                                <div class="step-icon"><i class="fas fa-server"></i></div>
+                                                <span>Environment Provision</span>
+                                            </div>
+                                            <div class="workflow-arrow">→</div>
+                                            <div class="workflow-step">
+                                                <div class="step-icon"><i class="fas fa-tasks"></i></div>
+                                                <span>Task Execution</span>
+                                            </div>
+                                            <div class="workflow-arrow">→</div>
+                                            <div class="workflow-step">
+                                                <div class="step-icon"><i class="fas fa-check"></i></div>
+                                                <span>Auto Validation</span>
+                                            </div>
+                                            <div class="workflow-arrow">→</div>
+                                            <div class="workflow-step">
+                                                <div class="step-icon"><i class="fas fa-trash"></i></div>
+                                                <span>Environment Cleanup</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Aspect 3 Content -->
+                            <div class="learning-details-content" data-aspect="3">
+                                <div class="details-header-learning">
+                                    <h3>Technical Implementation</h3>
+                                    <span class="details-badge-learning">Docker-Based</span>
+                                </div>
+                                <div class="technical-implementation">
+                                    <div class="architecture-diagram">
+                                        <h5>Container Architecture</h5>
+                                        <div class="architecture-visual">
+                                            <div class="architecture-layer">
+                                                <div class="layer-title">User Interface Layer</div>
+                                                <div class="layer-components">
+                                                    <div class="component">Web Dashboard</div>
+                                                    <div class="component">Progress Tracking</div>
+                                                    <div class="component">Challenge Interface</div>
+                                                </div>
+                                            </div>
+                                            <div class="architecture-layer">
+                                                <div class="layer-title">AI Management Layer</div>
+                                                <div class="layer-components">
+                                                    <div class="component">Container Orchestration</div>
+                                                    <div class="component">Challenge Generator</div>
+                                                    <div class="component">Validation Engine</div>
+                                                </div>
+                                            </div>
+                                            <div class="architecture-layer">
+                                                <div class="layer-title">Container Runtime Layer</div>
+                                                <div class="layer-components">
+                                                    <div class="component">Docker Engine</div>
+                                                    <div class="component">Isolated Environments</div>
+                                                    <div class="component">Resource Management</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="technical-features">
+                                        <div class="tech-feature">
+                                            <i class="fab fa-docker"></i>
+                                            <div class="tech-content">
+                                                <h6>Docker Manager Integration</h6>
+                                                <p>Custom container orchestration platform for seamless environment management</p>
+                                            </div>
+                                        </div>
+                                        <div class="tech-feature">
+                                            <i class="fas fa-sync-alt"></i>
+                                            <div class="tech-content">
+                                                <h6>Dynamic Provisioning</h6>
+                                                <p>Real-time creation and management of Docker containers per challenge</p>
+                                            </div>
+                                        </div>
+                                        <div class="tech-feature">
+                                            <i class="fas fa-expand-arrows-alt"></i>
+                                            <div class="tech-content">
+                                                <h6>Scalable Infrastructure</h6>
+                                                <p>Auto-scaling architecture without manual server management overhead</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learning Navigation Hint -->
+                        <div class="learning-hint">
+                            <div class="hint-section">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Click any aspect to explore detailed information</span>
+                            </div>
+                            <div class="hint-section">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Use <kbd>↑</kbd> <kbd>↓</kbd> keys to navigate aspects • <kbd>Esc</kbd> to close</span>
+                            </div>
                         </div>
                     </div>
                 </section>
