@@ -3326,6 +3326,7 @@ body {
     position: relative;
     padding: 0 10%;
     margin-bottom: 2rem;
+    z-index: 10;
 }
 
 .learning-aspect {
