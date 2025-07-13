@@ -1,0 +1,47 @@
+{
+  "name": "interactive-presentation-slider",
+  "version": "1.0.0",
+  "description": "A modern, feature-rich presentation slider with smooth animations and interactive elements",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "npx serve .",
+    "test": "open test.html",
+    "dev": "npx live-server .",
+    "build": "echo 'No build process needed for static files'",
+    "lint": "echo 'Add linting tools as needed'"
+  },
+  "keywords": [
+    "presentation",
+    "slider",
+    "interactive",
+    "animations",
+    "responsive",
+    "modern",
+    "carousel",
+    "slideshow"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/interactive-presentation-slider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/interactive-presentation-slider/issues"
+  },
+  "homepage": "https://github.com/yourusername/interactive-presentation-slider#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.0"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

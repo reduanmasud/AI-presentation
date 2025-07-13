@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Presentation Slider</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Presentation Container -->
+    <div class="presentation-container">
+        <!-- Header with Controls -->
+        <header class="presentation-header">
+            <div class="header-left">
+                <h1 class="presentation-title">AI in QA & Security Testing</h1>
+                <div class="slide-counter">
+                    <span class="current-slide">1</span> / <span class="total-slides">8</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="control-btn search-btn" title="Search slides">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="control-btn bookmark-btn" title="Bookmark slide">
+                    <i class="far fa-bookmark"></i>
+                </button>
+                <button class="control-btn autoplay-btn" title="Auto-play">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="control-btn fullscreen-btn" title="Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Main Slider Container -->
+        <main class="slider-container">
+            <!-- Slide Wrapper -->
+            <div class="slides-wrapper">
+                <!-- Slide 1: Title Slide -->
+                <section class="slide active" data-slide="1">
+                    <div class="slide-content title-slide">
+                        <div class="title-animation">
+                            <div class="ai-icon-container">
+                                <i class="fas fa-robot"></i>
+                                <i class="fas fa-shield-alt"></i>
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <h1 class="main-title">AI in QA & Security Testing</h1>
+                            <p class="subtitle">Practical Applications</p>
+                            <div class="presenters-info">
+                                <p class="presenters">Presented by: <strong>Reduan Masud & Arafat</strong></p>
+                                <p class="team-info">QA Team & xCloud</p>
+                            </div>
+                            <div class="title-decorations">
+                                <div class="decoration-line"></div>
+                                <div class="decoration-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 2: Workshop Agenda -->
+                <section class="slide" data-slide="2">
+                    <div class="slide-content agenda-slide">
+                        <h2 class="slide-title">Workshop Agenda</h2>
+                        <div class="agenda-grid">
+                            <div class="agenda-item clickable" data-reveal="1" data-target-slide="3">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-history"></i>
+                                    <span class="agenda-number">1</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Brief Evolution of Modern AI</h3>
+                                    <p>Understanding AI's journey and current capabilities</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="2" data-target-slide="4">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-robot"></i>
+                                    <span class="agenda-number">2</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Generate Test Cases Using AI</h3>
+                                    <p>Practical AI tools for automated test case generation</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="3" data-target-slide="5">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-dungeon"></i>
+                                    <span class="agenda-number">3</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>DevOps Dungeon - An Interesting App</h3>
+                                    <p>Exploring innovative DevOps automation tools</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="4" data-target-slide="6">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-gem"></i>
+                                    <span class="agenda-number">4</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>An Underrated App: Gemini</h3>
+                                    <p>Discovering hidden gems in AI-powered testing</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="5" data-target-slide="7">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span class="agenda-number">5</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>AI in Security Testing</h3>
+                                    <p>Vulnerability detection and security automation</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="6" data-target-slide="8">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span class="agenda-number">6</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>AI for Learning & Development</h3>
+                                    <p>Continuous learning and skill enhancement with AI</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="7" data-target-slide="8">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span class="agenda-number">7</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Staying Ahead: AI Trends & Resources</h3>
+                                    <p>Future trends and valuable resources</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="8" data-target-slide="8">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-comments"></i>
+                                    <span class="agenda-number">8</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Q&A and Next Steps</h3>
+                                    <p>Discussion and action items</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="agenda-footer">
+                            <p class="agenda-instruction">
+                                <i class="fas fa-hand-pointer"></i>
+                                Click any agenda item to jump directly to that section
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 3: Brief Evolution of Modern AI -->
+                <section class="slide" data-slide="3">
+                    <div class="slide-content features-slide">
+                        <h2 class="slide-title">Brief Evolution of Modern AI</h2>
+                        <div class="features-grid">
+                            <div class="feature-card" data-feature="traditional">
+                                <div class="feature-icon">
+                                    <i class="fas fa-history"></i>
+                                </div>
+                                <h3>Traditional Testing (Pre-AI)</h3>
+                                <p>Manual processes, rule-based automation, limited scalability</p>
+                                <div class="feature-demo">
+                                    <div class="timeline-bar" style="width: 30%; background: #dc3545;"></div>
+                                </div>
+                            </div>
+                            <div class="feature-card" data-feature="machine-learning">
+                                <div class="feature-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3>Machine Learning Era</h3>
+                                <p>Pattern recognition, predictive analytics, smart test selection</p>
+                                <div class="feature-demo">
+                                    <div class="timeline-bar" style="width: 70%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div class="feature-card" data-feature="modern-ai">
+                                <div class="feature-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h3>Modern AI & LLMs</h3>
+                                <p>Natural language processing, autonomous testing, intelligent insights</p>
+                                <div class="feature-demo">
+                                    <div class="timeline-bar" style="width: 95%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Faster Test Creation</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">60%</span>
+                                <span class="stat-label">Reduced Manual Effort</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">Better Bug Detection</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 4: Generate Test Cases Using AI -->
+                <section class="slide" data-slide="4">
+                    <div class="slide-content flip-cards-slide">
+                        <h2 class="slide-title">Generate Test Cases Using AI</h2>
+                        <div class="flip-cards-container">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <h3>Traditional Approach</h3>
+                                        <p>Manual test case creation</p>
+                                        <ul>
+                                            <li>Time-consuming process</li>
+                                            <li>Human error prone</li>
+                                            <li>Limited test coverage</li>
+                                            <li>Repetitive work</li>
+                                            <li>Inconsistent quality</li>
+                                        </ul>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h3>AI-Powered Approach</h3>
+                                        <p>Intelligent test case generation</p>
+                                        <ul>
+                                            <li>Automated test creation</li>
+                                            <li>Comprehensive coverage</li>
+                                            <li>Edge case detection</li>
+                                            <li>Natural language input</li>
+                                            <li>Consistent quality</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="flip-instruction">Click the card to see the transformation!</p>
+                        <div class="ai-tools-showcase">
+                            <div class="tool-badge">ChatGPT</div>
+                            <div class="tool-badge">GitHub Copilot</div>
+                            <div class="tool-badge">Testim</div>
+                            <div class="tool-badge">Applitools</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 5: DevOps Dungeon - An Interesting App -->
+                <section class="slide" data-slide="5">
+                    <div class="slide-content data-slide">
+                        <h2 class="slide-title">DevOps Dungeon - An Interesting App</h2>
+                        <div class="app-showcase">
+                            <div class="app-header">
+                                <div class="app-icon">
+                                    <i class="fas fa-dungeon"></i>
+                                </div>
+                                <div class="app-info">
+                                    <h3>DevOps Dungeon</h3>
+                                    <p>Gamified DevOps Learning Platform</p>
+                                </div>
+                            </div>
+                            <div class="app-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>Interactive Learning Quests</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Achievement System</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Team Collaboration</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Progress Tracking</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metrics-container">
+                            <div class="metric-card">
+                                <div class="metric-number" data-target="78">0</div>
+                                <div class="metric-label">Learning Efficiency</div>
+                                <div class="metric-unit">%</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-number" data-target="45">0</div>
+                                <div class="metric-label">Skill Modules</div>
+                                <div class="metric-unit">+</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-number" data-target="92">0</div>
+                                <div class="metric-label">User Satisfaction</div>
+                                <div class="metric-unit">%</div>
+                            </div>
+                        </div>
+                        <div class="demo-link">
+                            <button class="demo-button">Explore DevOps Dungeon</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 6: An Underrated App - Gemini -->
+                <section class="slide" data-slide="6">
+                    <div class="slide-content timeline-slide">
+                        <h2 class="slide-title">An Underrated App: Gemini</h2>
+                        <div class="gemini-showcase">
+                            <div class="gemini-header">
+                                <div class="gemini-logo">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <div class="gemini-info">
+                                    <h3>Google Gemini</h3>
+                                    <p>Advanced AI Assistant for QA & Testing</p>
+                                </div>
+                            </div>
+                            <div class="gemini-capabilities">
+                                <div class="capability-card">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Code Analysis</h4>
+                                    <p>Intelligent code review and bug detection</p>
+                                </div>
+                                <div class="capability-card">
+                                    <i class="fas fa-file-alt"></i>
+                                    <h4>Test Documentation</h4>
+                                    <p>Auto-generate comprehensive test plans</p>
+                                </div>
+                                <div class="capability-card">
+                                    <i class="fas fa-search"></i>
+                                    <h4>Bug Investigation</h4>
+                                    <p>Root cause analysis and solution suggestions</p>
+                                </div>
+                                <div class="capability-card">
+                                    <i class="fas fa-robot"></i>
+                                    <h4>Test Automation</h4>
+                                    <p>Generate automation scripts from requirements</p>
+                                </div>
+                            </div>
+                            <div class="gemini-demo">
+                                <div class="demo-prompt">
+                                    <strong>Example Prompt:</strong> "Generate test cases for a login form with email validation, password strength requirements, and remember me functionality"
+                                </div>
+                                <div class="demo-response">
+                                    <strong>Gemini Response:</strong> Comprehensive test suite with positive/negative scenarios, edge cases, and security considerations
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 7: AI in Security Testing -->
+                <section class="slide" data-slide="7">
+                    <div class="slide-content gallery-slide">
+                        <h2 class="slide-title">AI in Security Testing</h2>
+                        <div class="security-grid">
+                            <div class="security-item" data-category="vulnerability">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Vulnerability Detection</h3>
+                                <p>AI-powered SAST/DAST tools for automated security scanning</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">Snyk</span>
+                                    <span class="tool-tag">Veracode</span>
+                                    <span class="tool-tag">Checkmarx</span>
+                                </div>
+                            </div>
+                            <div class="security-item" data-category="penetration">
+                                <div class="security-icon">
+                                    <i class="fas fa-user-secret"></i>
+                                </div>
+                                <h3>Intelligent Penetration Testing</h3>
+                                <p>AI-driven attack simulation and threat modeling</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">Metasploit</span>
+                                    <span class="tool-tag">Burp Suite</span>
+                                    <span class="tool-tag">OWASP ZAP</span>
+                                </div>
+                            </div>
+                            <div class="security-item" data-category="monitoring">
+                                <div class="security-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <h3>Real-time Threat Monitoring</h3>
+                                <p>ML-based anomaly detection and incident response</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">Splunk</span>
+                                    <span class="tool-tag">Darktrace</span>
+                                    <span class="tool-tag">CrowdStrike</span>
+                                </div>
+                            </div>
+                            <div class="security-item" data-category="compliance">
+                                <div class="security-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h3>Compliance Automation</h3>
+                                <p>Automated security policy validation and reporting</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">AWS Config</span>
+                                    <span class="tool-tag">Azure Policy</span>
+                                    <span class="tool-tag">Chef InSpec</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="security-stats">
+                            <div class="stat-highlight">
+                                <span class="stat-number">70%</span>
+                                <span class="stat-text">Faster vulnerability detection</span>
+                            </div>
+                            <div class="stat-highlight">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-text">Reduction in false positives</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 8: AI for Learning & Development + Next Steps -->
+                <section class="slide" data-slide="8">
+                    <div class="slide-content conclusion-slide">
+                        <h2 class="slide-title">AI for Learning & Development</h2>
+                        <div class="learning-section">
+                            <div class="learning-grid">
+                                <div class="learning-card">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <h3>Personalized Learning Paths</h3>
+                                    <p>AI-curated courses based on skill gaps and career goals</p>
+                                </div>
+                                <div class="learning-card">
+                                    <i class="fas fa-brain"></i>
+                                    <h3>Intelligent Mentoring</h3>
+                                    <p>AI-powered code reviews and best practice suggestions</p>
+                                </div>
+                                <div class="learning-card">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h3>Progress Tracking</h3>
+                                    <p>Real-time skill assessment and improvement recommendations</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="next-steps-section">
+                            <h3>🚀 Next Steps & Action Items</h3>
+                            <div class="action-items">
+                                <div class="action-item">
+                                    <i class="fas fa-play"></i>
+                                    <span>Start experimenting with AI tools in your current projects</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Form AI-QA study groups within your teams</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>Explore recommended resources and training materials</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Identify pilot projects for AI integration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-content">
+                            <div class="cta-buttons">
+                                <button class="cta-button primary">Start Your AI Journey</button>
+                                <button class="cta-button secondary">Access Resources</button>
+                            </div>
+                            <div class="contact-info">
+                                <p><strong>Questions & Discussion</strong></p>
+                                <p>Reach out to <strong>Reduan Masud & Arafat</strong> - QA Team & xCloud</p>
+                                <p>Let's continue the conversation and explore AI possibilities together!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Navigation Controls -->
+        <nav class="navigation-controls">
+            <button class="nav-btn prev-btn" title="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slide-indicators">
+                <button class="indicator active" data-slide="1"></button>
+                <button class="indicator" data-slide="2"></button>
+                <button class="indicator" data-slide="3"></button>
+                <button class="indicator" data-slide="4"></button>
+                <button class="indicator" data-slide="5"></button>
+                <button class="indicator" data-slide="6"></button>
+                <button class="indicator" data-slide="7"></button>
+                <button class="indicator" data-slide="8"></button>
+            </div>
+            <button class="nav-btn next-btn" title="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </nav>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-nav">
+            <button class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="sidebar-content">
+                <h3>Table of Contents</h3>
+                <ul class="toc-list">
+                    <li><a href="#" data-slide="1">AI in QA & Security Testing</a></li>
+                    <li><a href="#" data-slide="2">Workshop Agenda</a></li>
+                    <li><a href="#" data-slide="3">Evolution of Modern AI</a></li>
+                    <li><a href="#" data-slide="4">AI Test Case Generation</a></li>
+                    <li><a href="#" data-slide="5">DevOps Dungeon App</a></li>
+                    <li><a href="#" data-slide="6">Gemini - Underrated App</a></li>
+                    <li><a href="#" data-slide="7">AI in Security Testing</a></li>
+                    <li><a href="#" data-slide="8">Learning & Next Steps</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Search Modal -->
+        <div class="search-modal">
+            <div class="search-content">
+                <div class="search-header">
+                    <input type="text" class="search-input" placeholder="Search slides...">
+                    <button class="search-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="demo-config.js"></script>
+    <script src="script.js"></script>
+    <script src="advanced-features.js"></script>
+</body>
+</html>
