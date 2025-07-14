@@ -4225,3 +4225,96 @@ body {
 .learning-aspect[data-aspect="1"] { animation-delay: 0.2s; }
 .learning-aspect[data-aspect="2"] { animation-delay: 0.4s; }
 .learning-aspect[data-aspect="3"] { animation-delay: 0.6s; }
+
+/* Locator Comparison Slide Styles */
+.locator-comparison-slide {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 2rem 3rem 2rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+    z-index: 10;
+}
+
+.locator-comparison-slide .comparison-container {
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out 0.3s forwards;
+}
+
+.comparison-subtitle {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.comparison-subtitle p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Locator Benefits Section */
+.locator-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: slideInUp 0.8s ease-out 0.6s forwards;
+    flex-wrap: wrap;
+}
+
+.benefit-highlight {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    transition: var(--transition);
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.benefit-highlight:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    background: rgba(37, 99, 235, 0.15);
+}
+
+.benefit-highlight i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.benefit-text {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Responsive adjustments for locator slide */
+@media (max-width: 768px) {
+    .locator-comparison-slide {
+        padding: 1rem;
+        gap: 1.5rem;
+        max-height: calc(100vh - 120px);
+    }
+
+    .locator-benefits {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .benefit-highlight {
+        min-width: auto;
+        max-width: none;
+    }
+}
