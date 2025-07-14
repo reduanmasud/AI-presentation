@@ -2,7 +2,7 @@
 class PresentationSlider {
     constructor() {
         this.currentSlide = 1;
-        this.totalSlides = 8;
+        this.totalSlides = 9;
         this.isAutoPlaying = false;
         this.autoPlayInterval = null;
         this.bookmarkedSlides = new Set();
