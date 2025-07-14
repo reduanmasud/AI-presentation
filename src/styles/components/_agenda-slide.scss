@@ -1,0 +1,328 @@
+// Agenda Slide Styles
+// Workshop agenda with interactive items
+
+.agenda-slide {
+  .slide-content {
+    max-width: 1000px;
+  }
+}
+
+.agenda-grid {
+  @include grid-layout(auto-fit, $spacing-6, 350px);
+  margin-top: $spacing-8;
+  
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+    gap: $spacing-4;
+    margin-top: $spacing-6;
+  }
+}
+
+.agenda-item {
+  @include card(var(--surface), var(--shadow), $border-radius-xl, $spacing-6);
+  @include transition(var(--transition));
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-10px);
+    @include shadow(var(--shadow-lg));
+    border-color: var(--primary-color);
+  }
+  
+  &::before {
+    content: '';
+    @include absolute(0, 0, null, 0);
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    @include transition(transform);
+  }
+  
+  &:hover::before {
+    transform: scaleX(1);
+  }
+  
+  @include respond-to('mobile') {
+    padding: $spacing-4;
+  }
+}
+
+.agenda-number {
+  @include flex-center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--primary-color);
+  color: var(--text-inverse);
+  border-radius: 50%;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  margin: 0 auto $spacing-4;
+  position: relative;
+  
+  &::after {
+    content: '';
+    @include absolute(50%, null, null, 50%);
+    transform: translate(-50%, -50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: numberPulse 2s infinite;
+  }
+  
+  @include respond-to('mobile') {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: $font-size-base;
+    
+    &::after {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}
+
+.agenda-icon {
+  font-size: $font-size-2xl;
+  color: var(--primary-color);
+  margin-bottom: $spacing-3;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-2;
+  }
+}
+
+.agenda-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-3;
+  line-height: $line-height-tight;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-2;
+  }
+}
+
+.agenda-description {
+  font-size: $font-size-base;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.agenda-target {
+  @include flex-layout(row, nowrap, center, center, $spacing-2);
+  font-size: $font-size-sm;
+  color: var(--primary-color);
+  font-weight: $font-weight-medium;
+  @include transition(color);
+  
+  i {
+    @include transition(transform);
+  }
+  
+  .agenda-item:hover & {
+    color: var(--secondary-color);
+    
+    i {
+      transform: translateX(3px);
+    }
+  }
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-xs;
+  }
+}
+
+.agenda-instruction {
+  color: var(--primary-color);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  @include flex-layout(row, nowrap, center, center, $spacing-2);
+  margin-top: $spacing-8;
+  
+  i {
+    animation: bounce 2s ease-in-out infinite;
+  }
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-xs;
+    margin-top: $spacing-6;
+  }
+}
+
+// Animation delays for agenda items
+.agenda-item {
+  &[data-reveal="1"] { animation: slideInUp 0.6s ease-out 0.1s forwards; }
+  &[data-reveal="2"] { animation: slideInUp 0.6s ease-out 0.2s forwards; }
+  &[data-reveal="3"] { animation: slideInUp 0.6s ease-out 0.3s forwards; }
+  &[data-reveal="4"] { animation: slideInUp 0.6s ease-out 0.4s forwards; }
+  &[data-reveal="5"] { animation: slideInUp 0.6s ease-out 0.5s forwards; }
+  &[data-reveal="6"] { animation: slideInUp 0.6s ease-out 0.6s forwards; }
+  &[data-reveal="7"] { animation: slideInUp 0.6s ease-out 0.7s forwards; }
+  &[data-reveal="8"] { animation: slideInUp 0.6s ease-out 0.8s forwards; }
+}
+
+// Interactive states
+.agenda-item {
+  &.clicked {
+    transform: scale(0.95);
+    @include transition(transform, 0.1s);
+  }
+  
+  &.visited {
+    opacity: 0.8;
+    
+    .agenda-number {
+      background: var(--success-color);
+      
+      &::after {
+        border-color: var(--success-color);
+      }
+    }
+    
+    .agenda-title {
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Progress indicator for agenda
+.agenda-progress {
+  @include flex-layout(row, nowrap, center, center, $spacing-2);
+  margin-top: $spacing-8;
+  
+  .progress-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--border-color);
+    @include transition(all);
+    
+    &.active {
+      background: var(--primary-color);
+      transform: scale(1.5);
+    }
+    
+    &.completed {
+      background: var(--success-color);
+    }
+  }
+  
+  @include respond-to('mobile') {
+    margin-top: $spacing-6;
+    
+    .progress-dot {
+      width: 0.375rem;
+      height: 0.375rem;
+    }
+  }
+}
+
+// Animations
+@keyframes numberPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .agenda-item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    
+    &:hover {
+      transform: none;
+    }
+    
+    &::before {
+      transition: none;
+    }
+  }
+  
+  .agenda-number::after {
+    animation: none;
+  }
+  
+  .agenda-instruction i {
+    animation: none;
+  }
+  
+  .agenda-target i {
+    transition: none;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .agenda-item {
+    border: 2px solid var(--text-primary);
+    
+    &:hover {
+      border-color: var(--primary-color);
+      border-width: 3px;
+    }
+  }
+  
+  .agenda-number {
+    border: 2px solid var(--text-inverse);
+  }
+}
+
+// Print styles
+@media print {
+  .agenda-item {
+    break-inside: avoid;
+    border: 1px solid #000;
+    box-shadow: none;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .agenda-number::after {
+    display: none;
+  }
+  
+  .agenda-instruction {
+    display: none;
+  }
+}

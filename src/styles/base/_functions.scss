@@ -1,0 +1,198 @@
+// SCSS Functions
+// Utility functions for calculations and transformations
+
+// Import Sass modules for modern functions
+@use "sass:math";
+
+/// Convert pixels to rem
+/// @param {Number} $pixels - Pixel value to convert
+/// @param {Number} $base-font-size - Base font size in pixels (default: 16px)
+/// @return {Number} - Value in rem
+@function px-to-rem($pixels, $base-font-size: 16px) {
+  @return math.div($pixels, $base-font-size) * 1rem;
+}
+
+/// Convert pixels to em
+/// @param {Number} $pixels - Pixel value to convert
+/// @param {Number} $context - Context font size in pixels (default: 16px)
+/// @return {Number} - Value in em
+@function px-to-em($pixels, $context: 16px) {
+  @return math.div($pixels, $context) * 1em;
+}
+
+/// Strip unit from a number
+/// @param {Number} $number - Number with unit
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+  @return $number;
+}
+
+/// Calculate fluid typography
+/// @param {Number} $min-size - Minimum font size
+/// @param {Number} $max-size - Maximum font size
+/// @param {Number} $min-width - Minimum viewport width
+/// @param {Number} $max-width - Maximum viewport width
+/// @return {String} - CSS clamp() function
+@function fluid-type($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  $slope: math.div($max-size - $min-size, $max-width - $min-width);
+  $intersection: (-$min-width * $slope) + $min-size;
+
+  @return clamp(#{$min-size}, #{$intersection} + #{$slope * 100vw}, #{$max-size});
+}
+
+/// Get color with opacity
+/// @param {Color} $color - Base color
+/// @param {Number} $opacity - Opacity value (0-1)
+/// @return {Color} - Color with opacity
+@function color-alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+/// Lighten color by percentage
+/// @param {Color} $color - Base color
+/// @param {Number} $percentage - Percentage to lighten (0-100)
+/// @return {Color} - Lightened color
+@function lighten-color($color, $percentage) {
+  @return lighten($color, $percentage);
+}
+
+/// Darken color by percentage
+/// @param {Color} $color - Base color
+/// @param {Number} $percentage - Percentage to darken (0-100)
+/// @return {Color} - Darkened color
+@function darken-color($color, $percentage) {
+  @return darken($color, $percentage);
+}
+
+/// Calculate contrast ratio between two colors
+/// @param {Color} $color1 - First color
+/// @param {Color} $color2 - Second color
+/// @return {Number} - Contrast ratio
+@function contrast-ratio($color1, $color2) {
+  $luminance1: luminance($color1);
+  $luminance2: luminance($color2);
+
+  @if $luminance1 > $luminance2 {
+    @return math.div($luminance1 + 0.05, $luminance2 + 0.05);
+  } @else {
+    @return math.div($luminance2 + 0.05, $luminance1 + 0.05);
+  }
+}
+
+/// Get luminance of a color
+/// @param {Color} $color - Color to analyze
+/// @return {Number} - Luminance value
+@function luminance($color) {
+  $red: math.div(red($color), 255);
+  $green: math.div(green($color), 255);
+  $blue: math.div(blue($color), 255);
+
+  $red: if($red <= 0.03928, math.div($red, 12.92), pow(math.div($red + 0.055, 1.055), 2.4));
+  $green: if($green <= 0.03928, math.div($green, 12.92), pow(math.div($green + 0.055, 1.055), 2.4));
+  $blue: if($blue <= 0.03928, math.div($blue, 12.92), pow(math.div($blue + 0.055, 1.055), 2.4));
+  
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+/// Power function (since SCSS doesn't have pow)
+/// @param {Number} $base - Base number
+/// @param {Number} $exponent - Exponent
+/// @return {Number} - Result
+@function pow($base, $exponent) {
+  $result: 1;
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $result: $result * $base;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $result: math.div($result, $base);
+    }
+  }
+  @return $result;
+}
+
+/// Generate box shadow with multiple layers
+/// @param {List} $shadows - List of shadow values
+/// @return {String} - Combined box-shadow
+@function multi-shadow($shadows...) {
+  $result: ();
+  @each $shadow in $shadows {
+    $result: append($result, $shadow, comma);
+  }
+  @return $result;
+}
+
+/// Calculate optimal text color based on background
+/// @param {Color} $background - Background color
+/// @param {Color} $light-text - Light text color (default: white)
+/// @param {Color} $dark-text - Dark text color (default: black)
+/// @return {Color} - Optimal text color
+@function optimal-text-color($background, $light-text: #ffffff, $dark-text: #000000) {
+  $light-contrast: contrast-ratio($background, $light-text);
+  $dark-contrast: contrast-ratio($background, $dark-text);
+  
+  @return if($light-contrast > $dark-contrast, $light-text, $dark-text);
+}
+
+/// Generate CSS custom property name
+/// @param {String} $name - Property name
+/// @param {String} $prefix - Prefix (default: 'app')
+/// @return {String} - CSS custom property
+@function css-var($name, $prefix: 'app') {
+  @return --#{$prefix}-#{$name};
+}
+
+/// Use CSS custom property with fallback
+/// @param {String} $name - Property name
+/// @param {*} $fallback - Fallback value
+/// @param {String} $prefix - Prefix (default: 'app')
+/// @return {String} - CSS var() function
+@function use-var($name, $fallback: null, $prefix: 'app') {
+  $var-name: css-var($name, $prefix);
+  @if $fallback {
+    @return var(#{$var-name}, #{$fallback});
+  } @else {
+    @return var(#{$var-name});
+  }
+}
+
+/// Generate responsive font size
+/// @param {Number} $min - Minimum size
+/// @param {Number} $max - Maximum size
+/// @param {Number} $min-vw - Minimum viewport width (default: 320px)
+/// @param {Number} $max-vw - Maximum viewport width (default: 1200px)
+/// @return {String} - Responsive font size
+@function responsive-font($min, $max, $min-vw: 320px, $max-vw: 1200px) {
+  @return fluid-type($min, $max, $min-vw, $max-vw);
+}
+
+/// Calculate grid column width
+/// @param {Number} $columns - Number of columns
+/// @param {Number} $gap - Gap between columns
+/// @param {Number} $total-columns - Total columns in grid (default: 12)
+/// @return {String} - CSS calc() function
+@function grid-width($columns, $gap: 1rem, $total-columns: 12) {
+  $column-width: math.div(100%, $total-columns) * $columns;
+  $gap-adjustment: $gap * math.div($total-columns - 1, $total-columns) * math.div($columns - 1, $columns);
+  @return calc(#{$column-width} - #{$gap-adjustment});
+}
+
+/// Generate animation timing function
+/// @param {String} $type - Animation type (ease-in, ease-out, ease-in-out, bounce, etc.)
+/// @return {String} - CSS timing function
+@function timing($type) {
+  $timings: (
+    'ease-in': cubic-bezier(0.4, 0, 1, 1),
+    'ease-out': cubic-bezier(0, 0, 0.2, 1),
+    'ease-in-out': cubic-bezier(0.4, 0, 0.2, 1),
+    'bounce': cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    'smooth': cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    'sharp': cubic-bezier(0.4, 0, 0.6, 1)
+  );
+  
+  @return map-get($timings, $type) or cubic-bezier(0.4, 0, 0.2, 1);
+}

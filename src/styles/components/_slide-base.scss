@@ -1,0 +1,326 @@
+// Base Slide Styles
+// Common styles for all slide types
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  @include flex-center;
+  padding: $spacing-8;
+  opacity: 0;
+  transform: translateX(50px);
+  @include transition(var(--transition));
+  position: relative;
+  
+  &.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  @include respond-to('mobile') {
+    padding: $spacing-4;
+  }
+}
+
+.slide-content {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding-right: 10px;
+  @include custom-scrollbar(transparent, var(--primary-color));
+  @include smooth-scroll;
+  padding-bottom: $spacing-12;
+  
+  @include respond-to('mobile') {
+    max-height: calc(100vh - 150px);
+    padding-right: 5px;
+    padding-bottom: $spacing-8;
+  }
+}
+
+.slide-title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-8;
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 0.8s ease-out 0.2s forwards;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-6;
+  }
+  
+  @include respond-to('tablet') {
+    font-size: $font-size-3xl;
+  }
+}
+
+.slide-subtitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  color: var(--text-secondary);
+  margin-bottom: $spacing-6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.8s ease-out 0.4s forwards;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-4;
+  }
+}
+
+// Common slide animations
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Common slide elements
+.slide-icon {
+  font-size: $font-size-5xl;
+  color: var(--primary-color);
+  margin-bottom: $spacing-6;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: scaleIn 0.6s ease-out 0.6s forwards;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-4;
+  }
+}
+
+.slide-description {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideInUp 0.8s ease-out 0.8s forwards;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-6;
+  }
+}
+
+// Slide backgrounds
+.slide-background {
+  @include absolute(0, 0, 0, 0);
+  z-index: -1;
+  
+  &.gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  }
+  
+  &.pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  }
+  
+  &.dots {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+// Slide decorations
+.slide-decoration {
+  @include absolute;
+  pointer-events: none;
+  z-index: -1;
+  
+  &.top-left {
+    top: $spacing-8;
+    left: $spacing-8;
+  }
+  
+  &.top-right {
+    top: $spacing-8;
+    right: $spacing-8;
+  }
+  
+  &.bottom-left {
+    bottom: $spacing-8;
+    left: $spacing-8;
+  }
+  
+  &.bottom-right {
+    bottom: $spacing-8;
+    right: $spacing-8;
+  }
+  
+  &.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Slide content grid
+.slide-grid {
+  @include grid-layout(auto-fit, $spacing-6, 250px);
+  margin-top: $spacing-8;
+  
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+    gap: $spacing-4;
+    margin-top: $spacing-6;
+  }
+}
+
+.slide-grid-item {
+  @include card;
+  opacity: 0;
+  transform: translateY(30px);
+  
+  &:nth-child(1) { animation: slideInUp 0.6s ease-out 1s forwards; }
+  &:nth-child(2) { animation: slideInUp 0.6s ease-out 1.2s forwards; }
+  &:nth-child(3) { animation: slideInUp 0.6s ease-out 1.4s forwards; }
+  &:nth-child(4) { animation: slideInUp 0.6s ease-out 1.6s forwards; }
+  &:nth-child(5) { animation: slideInUp 0.6s ease-out 1.8s forwards; }
+  &:nth-child(6) { animation: slideInUp 0.6s ease-out 2s forwards; }
+}
+
+// Slide actions
+.slide-actions {
+  @include flex-layout(row, wrap, center, center, $spacing-4);
+  margin-top: $spacing-8;
+  
+  @include respond-to('mobile') {
+    margin-top: $spacing-6;
+    gap: $spacing-3;
+  }
+}
+
+.slide-action-btn {
+  @include button-reset;
+  padding: $spacing-3 $spacing-6;
+  background: var(--primary-color);
+  color: var(--text-inverse);
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-medium;
+  @include transition(all);
+  @include shadow(var(--shadow-base));
+  
+  &:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    @include shadow(var(--shadow-lg));
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &.secondary {
+    background: var(--background);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    
+    &:hover {
+      background: var(--surface);
+      border-color: var(--primary-color);
+    }
+  }
+  
+  @include respond-to('mobile') {
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide-title,
+  .slide-subtitle,
+  .slide-icon,
+  .slide-description,
+  .slide-grid-item {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .slide {
+    border: 2px solid var(--text-primary);
+  }
+  
+  .slide-title,
+  .slide-subtitle {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}

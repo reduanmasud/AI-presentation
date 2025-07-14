@@ -1,0 +1,391 @@
+// Features Grid Component
+// Interactive feature cards and demonstrations
+
+.features-grid {
+  @include grid-layout(auto-fit, $spacing-8, 300px);
+  margin-top: $spacing-8;
+  
+  @include respond-to('mobile') {
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    margin-top: $spacing-6;
+  }
+}
+
+.feature-card {
+  @include card(var(--surface), var(--shadow), $border-radius-xl, $spacing-8);
+  @include transition(var(--transition));
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-10px);
+    @include shadow(var(--shadow-lg));
+    border-color: var(--primary-color);
+  }
+  
+  &::before {
+    content: '';
+    @include absolute(-50%, -50%, null, null);
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    @include transition(transform, 0.6s);
+  }
+  
+  &:hover::before {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+  
+  @include respond-to('mobile') {
+    padding: $spacing-6;
+  }
+}
+
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
+  background: var(--primary-color);
+  border-radius: $border-radius-xl;
+  @include flex-center;
+  margin: 0 auto $spacing-4;
+  color: var(--text-inverse);
+  font-size: $font-size-2xl;
+  position: relative;
+  @include transition(all);
+  
+  &::after {
+    content: '';
+    @include absolute(50%, null, null, 50%);
+    transform: translate(-50%, -50%);
+    width: 5rem;
+    height: 5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: $border-radius-xl;
+    opacity: 0;
+    @include transition(all);
+  }
+  
+  .feature-card:hover & {
+    transform: scale(1.1) rotate(5deg);
+    
+    &::after {
+      opacity: 0.3;
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+  
+  @include respond-to('mobile') {
+    width: 3rem;
+    height: 3rem;
+    font-size: $font-size-xl;
+    
+    &::after {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}
+
+.feature-card h3 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-4;
+  color: var(--text-primary);
+  text-align: center;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  line-height: $line-height-relaxed;
+  text-align: center;
+  margin-bottom: $spacing-4;
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.feature-demo {
+  margin-top: $spacing-4;
+  padding: $spacing-4;
+  background: var(--background);
+  border-radius: $border-radius-lg;
+  border: 1px solid var(--border);
+  position: relative;
+  
+  @include respond-to('mobile') {
+    padding: $spacing-3;
+    margin-top: $spacing-3;
+  }
+}
+
+.demo-element {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: bounce 2s ease-in-out infinite;
+  position: relative;
+  
+  &::after {
+    content: '';
+    @include absolute(50%, null, null, 50%);
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: elementPulse 2s ease-in-out infinite;
+  }
+  
+  @include respond-to('mobile') {
+    width: 40px;
+    height: 40px;
+    
+    &::after {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.demo-button {
+  @include button-reset;
+  background: var(--primary-color);
+  color: var(--text-inverse);
+  padding: $spacing-2 $spacing-4;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-medium;
+  @include transition(var(--transition));
+  display: block;
+  margin: $spacing-3 auto 0;
+  
+  &:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  @include respond-to('mobile') {
+    padding: $spacing-2 $spacing-3;
+    font-size: $font-size-sm;
+  }
+}
+
+.demo-reveal {
+  margin-top: $spacing-4;
+  padding: $spacing-4;
+  background: var(--accent-color);
+  color: var(--text-inverse);
+  border-radius: $border-radius-lg;
+  opacity: 0;
+  transform: scale(0.8);
+  @include transition(var(--transition));
+  text-align: center;
+  font-weight: $font-weight-medium;
+  
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  @include respond-to('mobile') {
+    padding: $spacing-3;
+    margin-top: $spacing-3;
+    font-size: $font-size-sm;
+  }
+}
+
+.device-icons {
+  @include flex-layout(row, nowrap, center, center, $spacing-4);
+  font-size: $font-size-2xl;
+  color: var(--primary-color);
+  margin-top: $spacing-4;
+  
+  i {
+    @include transition(all);
+    
+    &:hover {
+      color: var(--accent-color);
+      transform: scale(1.2) rotate(5deg);
+    }
+  }
+  
+  @include respond-to('mobile') {
+    font-size: $font-size-xl;
+    gap: $spacing-3;
+    margin-top: $spacing-3;
+  }
+}
+
+// Feature card variants
+.feature-card {
+  &.primary {
+    .feature-icon {
+      background: var(--primary-color);
+    }
+  }
+  
+  &.secondary {
+    .feature-icon {
+      background: var(--secondary-color);
+    }
+  }
+  
+  &.accent {
+    .feature-icon {
+      background: var(--accent-color);
+    }
+  }
+  
+  &.success {
+    .feature-icon {
+      background: var(--success-color);
+    }
+  }
+}
+
+// Staggered animation for feature cards
+.feature-card {
+  &:nth-child(1) { animation: slideInUp 0.6s ease-out 0.2s forwards; }
+  &:nth-child(2) { animation: slideInUp 0.6s ease-out 0.4s forwards; }
+  &:nth-child(3) { animation: slideInUp 0.6s ease-out 0.6s forwards; }
+  &:nth-child(4) { animation: slideInUp 0.6s ease-out 0.8s forwards; }
+  &:nth-child(5) { animation: slideInUp 0.6s ease-out 1s forwards; }
+  &:nth-child(6) { animation: slideInUp 0.6s ease-out 1.2s forwards; }
+}
+
+// Interactive states
+.feature-card {
+  &.active {
+    border-color: var(--primary-color);
+    @include shadow(var(--shadow-lg));
+    
+    .feature-icon {
+      background: var(--accent-color);
+    }
+  }
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none;
+      box-shadow: var(--shadow);
+      border-color: var(--border);
+    }
+  }
+}
+
+// Animations
+@keyframes elementPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .feature-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    
+    &:hover {
+      transform: none;
+    }
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .feature-icon {
+    &::after {
+      display: none;
+    }
+    
+    .feature-card:hover & {
+      transform: none;
+    }
+  }
+  
+  .demo-element {
+    animation: none;
+    
+    &::after {
+      animation: none;
+    }
+  }
+  
+  .device-icons i:hover {
+    transform: none;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .feature-card {
+    border: 2px solid var(--text-primary);
+    
+    &:hover {
+      border-width: 3px;
+    }
+  }
+  
+  .feature-demo {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+// Print styles
+@media print {
+  .feature-card {
+    break-inside: avoid;
+    border: 1px solid #000;
+    box-shadow: none;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    &::before {
+      display: none;
+    }
+  }
+  
+  .demo-element {
+    animation: none;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .demo-button {
+    border: 1px solid #000;
+  }
+}

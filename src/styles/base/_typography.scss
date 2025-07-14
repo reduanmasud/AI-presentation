@@ -1,0 +1,194 @@
+// Typography Styles
+// Defines consistent typography throughout the application
+
+// Base typography
+body {
+  font-family: var(--font-family);
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: var(--text-primary);
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-4;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-2xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-xl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-lg;
+  }
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+}
+
+// Paragraphs
+p {
+  margin-bottom: $spacing-4;
+  line-height: $line-height-relaxed;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Links
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: 2px solid var(--border-color-focus);
+    outline-offset: 2px;
+    border-radius: $border-radius-sm;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacing-4;
+  padding-left: $spacing-6;
+  
+  li {
+    margin-bottom: $spacing-2;
+    line-height: $line-height-relaxed;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+// Code and preformatted text
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--background-secondary);
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-sm;
+  color: var(--text-primary);
+}
+
+pre {
+  font-family: var(--font-family-mono);
+  background-color: var(--background-secondary);
+  padding: $spacing-4;
+  border-radius: $border-radius-md;
+  overflow-x: auto;
+  margin-bottom: $spacing-4;
+  
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: $spacing-4;
+  margin: $spacing-6 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+// Small text
+small {
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+}
+
+// Strong and emphasis
+strong, b {
+  font-weight: $font-weight-semibold;
+}
+
+em, i {
+  font-style: italic;
+}
+
+// Mark/highlight
+mark {
+  background-color: var(--warning-color);
+  color: var(--text-primary);
+  padding: $spacing-1;
+  border-radius: $border-radius-sm;
+}
+
+// Utility classes for typography
+.text-xs { font-size: $font-size-xs; }
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+.text-2xl { font-size: $font-size-2xl; }
+.text-3xl { font-size: $font-size-3xl; }
+.text-4xl { font-size: $font-size-4xl; }
+.text-5xl { font-size: $font-size-5xl; }
+
+.font-light { font-weight: $font-weight-light; }
+.font-normal { font-weight: $font-weight-normal; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-inverse { color: var(--text-inverse); }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.leading-tight { line-height: $line-height-tight; }
+.leading-normal { line-height: $line-height-normal; }
+.leading-relaxed { line-height: $line-height-relaxed; }

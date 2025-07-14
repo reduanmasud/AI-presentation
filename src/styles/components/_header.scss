@@ -1,0 +1,155 @@
+// Header Component Styles
+// Presentation header with controls and navigation
+
+.presentation-header {
+  @include flex-layout(row, nowrap, space-between, center);
+  padding: $spacing-4 $spacing-8;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--border-color);
+  z-index: $z-index-sticky;
+  height: var(--header-height);
+
+  @include respond-to('mobile') {
+    padding: $spacing-3 $spacing-4;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+  }
+}
+
+.header-left {
+  @include flex-layout(row, nowrap, flex-start, center, $spacing-8);
+
+  @include respond-to('mobile') {
+    gap: $spacing-4;
+    flex: 1;
+  }
+}
+
+.presentation-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: var(--text-primary);
+  margin: 0;
+
+  @include respond-to('mobile') {
+    font-size: $font-size-lg;
+  }
+
+  @include respond-to('tablet') {
+    font-size: $font-size-lg;
+  }
+}
+
+.slide-counter {
+  @include flex-layout(row, nowrap, center, center);
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  background: var(--background);
+  padding: $spacing-2 $spacing-4;
+  border-radius: $border-radius-md;
+  border: 1px solid var(--border-color);
+  font-weight: $font-weight-medium;
+  min-width: 4rem;
+
+  .current-slide {
+    color: var(--primary-color);
+    font-weight: $font-weight-semibold;
+  }
+
+  @include respond-to('mobile') {
+    font-size: $font-size-xs;
+    padding: $spacing-1 $spacing-3;
+    min-width: 3rem;
+  }
+}
+
+.header-right {
+  @include flex-layout(row, nowrap, flex-end, center, $spacing-2);
+
+  @include respond-to('mobile') {
+    gap: $spacing-1;
+  }
+}
+
+.control-btn {
+  @include button-reset;
+  @include flex-center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-md;
+  color: var(--text-secondary);
+  @include transition(all);
+
+  &:hover {
+    background: var(--primary-color);
+    color: var(--text-inverse);
+    transform: translateY(-1px);
+    @include shadow(var(--shadow-md));
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.active {
+    background: var(--primary-color);
+    color: var(--text-inverse);
+    border-color: var(--primary-color);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      background: var(--background);
+      color: var(--text-secondary);
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  i {
+    font-size: $font-size-sm;
+  }
+
+  @include respond-to('mobile') {
+    width: 2rem;
+    height: 2rem;
+
+    i {
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+// Specific control button styles
+.search-btn {
+  &.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+}
+
+.bookmark-btn {
+  &.active {
+    background: var(--warning-color);
+    border-color: var(--warning-color);
+  }
+}
+
+.autoplay-btn {
+  &.active {
+    background: var(--success-color);
+    border-color: var(--success-color);
+  }
+}
+
+.fullscreen-btn {
+  &.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+}

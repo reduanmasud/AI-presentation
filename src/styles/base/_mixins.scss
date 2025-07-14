@@ -1,0 +1,317 @@
+// SCSS Mixins
+// Reusable mixins for common patterns and responsive design
+
+/// Responsive breakpoint mixin
+/// @param {String} $breakpoint - Breakpoint name or custom value
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'mobile' {
+    @media (max-width: #{$breakpoint-sm - 1px}) { @content; }
+  } @else if $breakpoint == 'tablet' {
+    @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-lg - 1px}) { @content; }
+  } @else if $breakpoint == 'desktop' {
+    @media (min-width: #{$breakpoint-lg}) { @content; }
+  } @else if $breakpoint == 'wide' {
+    @media (min-width: #{$breakpoint-xl}) { @content; }
+  } @else {
+    @media (max-width: #{$breakpoint}) { @content; }
+  }
+}
+
+/// Flexbox center mixin
+/// @param {String} $direction - Flex direction (default: row)
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+/// Absolute positioning mixin
+/// @param {Number} $top - Top position
+/// @param {Number} $right - Right position
+/// @param {Number} $bottom - Bottom position
+/// @param {Number} $left - Left position
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+}
+
+/// Fixed positioning mixin
+/// @param {Number} $top - Top position
+/// @param {Number} $right - Right position
+/// @param {Number} $bottom - Bottom position
+/// @param {Number} $left - Left position
+@mixin fixed($top: null, $right: null, $bottom: null, $left: null) {
+  position: fixed;
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+}
+
+/// Button reset mixin
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  
+  &:focus {
+    outline: 2px solid var(--border-color-focus);
+    outline-offset: 2px;
+  }
+}
+
+/// Visually hidden mixin (for screen readers)
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/// Truncate text mixin
+/// @param {Number} $lines - Number of lines (default: 1)
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/// Aspect ratio mixin
+/// @param {Number} $width - Width ratio
+/// @param {Number} $height - Height ratio
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/// Smooth scrolling mixin
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/// Custom scrollbar mixin
+/// @param {Color} $track-color - Track color
+/// @param {Color} $thumb-color - Thumb color
+/// @param {Number} $width - Scrollbar width
+@mixin custom-scrollbar($track-color: var(--background-secondary), $thumb-color: var(--border-color), $width: 8px) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: calc($width / 2);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: calc($width / 2);
+
+    &:hover {
+      background: $thumb-color;
+      opacity: 0.8;
+    }
+  }
+  
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color $track-color;
+}
+
+/// Animation mixin
+/// @param {String} $name - Animation name
+/// @param {Number} $duration - Animation duration
+/// @param {String} $timing - Timing function
+/// @param {Number} $delay - Animation delay
+/// @param {String} $fill-mode - Fill mode
+@mixin animate($name, $duration: 0.3s, $timing: ease-out, $delay: 0s, $fill-mode: forwards) {
+  animation: $name $duration $timing $delay $fill-mode;
+}
+
+/// Transition mixin
+/// @param {String} $properties - Properties to transition
+/// @param {Number} $duration - Transition duration
+/// @param {String} $timing - Timing function
+/// @param {Number} $delay - Transition delay
+@mixin transition($properties: all, $duration: var(--transition-normal), $timing: ease-out, $delay: 0s) {
+  transition: $properties $duration $timing $delay;
+}
+
+/// Box shadow mixin
+/// @param {String} $shadow - Shadow values
+@mixin shadow($shadow: var(--shadow-base)) {
+  box-shadow: $shadow;
+}
+
+/// Border radius mixin
+/// @param {Number} $radius - Border radius
+@mixin radius($radius: var(--border-radius-base)) {
+  border-radius: $radius;
+}
+
+/// Grid layout mixin
+/// @param {Number} $columns - Number of columns
+/// @param {Number} $gap - Gap between items
+/// @param {String} $min-width - Minimum item width
+@mixin grid-layout($columns: auto-fit, $gap: 1rem, $min-width: 250px) {
+  display: grid;
+  grid-template-columns: repeat($columns, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+/// Flex layout mixin
+/// @param {String} $direction - Flex direction
+/// @param {String} $wrap - Flex wrap
+/// @param {String} $justify - Justify content
+/// @param {String} $align - Align items
+/// @param {Number} $gap - Gap between items
+@mixin flex-layout($direction: row, $wrap: nowrap, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  @if $gap > 0 {
+    gap: $gap;
+  }
+}
+
+/// Card style mixin
+/// @param {Color} $background - Background color
+/// @param {String} $shadow - Box shadow
+/// @param {Number} $radius - Border radius
+/// @param {Number} $padding - Padding
+@mixin card($background: var(--background), $shadow: var(--shadow-base), $radius: var(--border-radius-lg), $padding: $spacing-6) {
+  background: $background;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  padding: $padding;
+}
+
+/// Focus outline mixin
+/// @param {Color} $color - Outline color
+/// @param {Number} $width - Outline width
+/// @param {Number} $offset - Outline offset
+@mixin focus-outline($color: var(--border-color-focus), $width: 2px, $offset: 2px) {
+  outline: $width solid $color;
+  outline-offset: $offset;
+}
+
+/// Hover effect mixin
+/// @param {Number} $scale - Scale transform
+/// @param {Number} $translate-y - Y translation
+/// @param {String} $shadow - Box shadow
+@mixin hover-effect($scale: 1.02, $translate-y: -2px, $shadow: var(--shadow-lg)) {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  
+  &:hover {
+    transform: scale($scale) translateY($translate-y);
+    box-shadow: $shadow;
+  }
+}
+
+/// Loading spinner mixin
+/// @param {Number} $size - Spinner size
+/// @param {Color} $color - Spinner color
+/// @param {Number} $border-width - Border width
+@mixin loading-spinner($size: 2rem, $color: var(--primary-color), $border-width: 2px) {
+  width: $size;
+  height: $size;
+  border: $border-width solid transparent;
+  border-top: $border-width solid $color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/// Gradient background mixin
+/// @param {Color} $start - Start color
+/// @param {Color} $end - End color
+/// @param {Number} $angle - Gradient angle
+@mixin gradient($start, $end, $angle: 135deg) {
+  background: linear-gradient($angle, $start, $end);
+}
+
+/// Text gradient mixin
+/// @param {Color} $start - Start color
+/// @param {Color} $end - End color
+/// @param {Number} $angle - Gradient angle
+@mixin text-gradient($start, $end, $angle: 135deg) {
+  background: linear-gradient($angle, $start, $end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/// Backdrop blur mixin
+/// @param {Number} $blur - Blur amount
+/// @param {Color} $background - Background color with opacity
+@mixin backdrop-blur($blur: 10px, $background: rgba(255, 255, 255, 0.8)) {
+  backdrop-filter: blur($blur);
+  background: $background;
+}
+
+/// Slide animation mixin
+/// @param {String} $direction - Animation direction (up, down, left, right)
+/// @param {Number} $distance - Animation distance
+@mixin slide-animation($direction: up, $distance: 30px) {
+  $transform-from: translateY($distance);
+  $transform-to: translateY(0);
+  
+  @if $direction == down {
+    $transform-from: translateY(-$distance);
+  } @else if $direction == left {
+    $transform-from: translateX($distance);
+    $transform-to: translateX(0);
+  } @else if $direction == right {
+    $transform-from: translateX(-$distance);
+    $transform-to: translateX(0);
+  }
+  
+  opacity: 0;
+  transform: $transform-from;
+  animation: slideIn 0.6s ease-out forwards;
+  
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: $transform-to;
+    }
+  }
+}

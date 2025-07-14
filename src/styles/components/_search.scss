@@ -1,0 +1,225 @@
+// Search Component Styles
+// Search modal and functionality
+
+.search-overlay {
+  @include fixed(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.8);
+  @include backdrop-blur(5px);
+  z-index: $z-index-modal;
+  @include flex-center;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all);
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.search-modal {
+  background: var(--background);
+  border-radius: $border-radius-xl;
+  @include shadow(var(--shadow-xl));
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  transform: scale(0.9) translateY(-20px);
+  @include transition(transform);
+
+  .search-overlay.visible & {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.search-header {
+  @include flex-layout(row, nowrap, space-between, center);
+  padding: $spacing-6;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--background-secondary);
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: var(--text-primary);
+  }
+}
+
+.search-close {
+  @include button-reset;
+  @include flex-center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--text-secondary);
+  @include transition(all);
+
+  &:hover {
+    background: var(--error-color);
+    color: var(--text-inverse);
+  }
+}
+
+.search-input-container {
+  padding: $spacing-6;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: $spacing-4 $spacing-12 $spacing-4 $spacing-4;
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-lg;
+  font-size: $font-size-base;
+  background: var(--background);
+  color: var(--text-primary);
+  @include transition(border-color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+}
+
+.search-icon {
+  @include absolute(50%, $spacing-4, null, null);
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  font-size: $font-size-lg;
+  pointer-events: none;
+}
+
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.search-result {
+  padding: $spacing-4 $spacing-6;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  @include transition(background-color);
+
+  &:hover,
+  &.highlighted {
+    background: var(--background-secondary);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.result-title {
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+  margin-bottom: $spacing-1;
+}
+
+.result-slide {
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+}
+
+.result-excerpt {
+  font-size: $font-size-sm;
+  color: var(--text-secondary);
+  margin-top: $spacing-2;
+  line-height: $line-height-relaxed;
+
+  .highlight {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    padding: 0.125rem 0.25rem;
+    border-radius: $border-radius-sm;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.no-results {
+  padding: $spacing-8 $spacing-6;
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+
+  i {
+    font-size: 2rem;
+    margin-bottom: $spacing-4;
+    opacity: 0.5;
+  }
+}
+
+.search-footer {
+  padding: $spacing-4 $spacing-6;
+  background: var(--background-secondary);
+  border-top: 1px solid var(--border-color);
+  font-size: $font-size-xs;
+  color: var(--text-tertiary);
+  text-align: center;
+
+  kbd {
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-sm;
+    padding: 0.125rem 0.25rem;
+    font-family: var(--font-family-mono);
+    margin: 0 0.125rem;
+  }
+}
+
+// Loading state
+.search-loading {
+  @include flex-center;
+  padding: $spacing-8;
+
+  .loading-spinner {
+    @include loading-spinner(1.5rem, var(--primary-color));
+    margin-right: $spacing-3;
+  }
+
+  span {
+    color: var(--text-secondary);
+  }
+}
+
+// Responsive adjustments
+@include respond-to('mobile') {
+  .search-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .search-header,
+  .search-input-container {
+    padding: $spacing-4;
+  }
+
+  .search-result {
+    padding: $spacing-3 $spacing-4;
+  }
+
+  .search-input {
+    padding: $spacing-3 $spacing-10 $spacing-3 $spacing-3;
+    font-size: $font-size-sm;
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .search-overlay,
+  .search-modal {
+    transition: none;
+  }
+
+  .search-modal {
+    transform: none;
+  }
+}

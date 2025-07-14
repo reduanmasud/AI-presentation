@@ -1,0 +1,90 @@
+// Main SCSS Entry Point
+// This file imports all other SCSS modules in the correct order
+
+// Import original styles first to maintain exact styling
+@import url('/styles-original.css');
+
+// 1. Functions and variables (must be first)
+@import 'base/functions';
+@import 'base/variables';
+
+// 2. Mixins (can use functions and variables)
+@import 'base/mixins';
+
+// 3. Base styles (reset, typography) - commented out to avoid conflicts
+// @import 'base/reset';
+// @import 'base/typography';
+
+// 4. Component styles (core components)
+@import 'components/loading';
+@import 'components/presentation';
+@import 'components/header';
+@import 'components/progress';
+@import 'components/navigation';
+@import 'components/navigation-advanced';
+@import 'components/search';
+@import 'components/interactions';
+@import 'components/performance';
+@import 'components/testing';
+
+// 5. Slide components
+@import 'components/slide-base';
+@import 'components/title-slide';
+@import 'components/agenda-slide';
+@import 'components/features-grid';
+
+// 6. Layout styles
+@import 'layouts/presentation-layout';
+@import 'layouts/responsive';
+
+// 7. Theme styles (loaded last to allow overrides)
+@import 'themes/modern';
+
+// Global styles that don't fit elsewhere
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: var(--background);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Utility classes
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

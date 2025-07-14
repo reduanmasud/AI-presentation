@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Presentation Slider</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Presentation Container -->
+    <div class="presentation-container">
+        <!-- Header with Controls -->
+        <header class="presentation-header">
+            <div class="header-left">
+                <h1 class="presentation-title">AI in QA & Security Testing</h1>
+                <div class="slide-counter">
+                    <span class="current-slide">1</span> / <span class="total-slides">8</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="control-btn search-btn" title="Search slides">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="control-btn bookmark-btn" title="Bookmark slide">
+                    <i class="far fa-bookmark"></i>
+                </button>
+                <button class="control-btn autoplay-btn" title="Auto-play">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="control-btn fullscreen-btn" title="Fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Main Slider Container -->
+        <main class="slider-container">
+            <!-- Slide Wrapper -->
+            <div class="slides-wrapper">
+                <!-- Slide 1: Title Slide -->
+                <section class="slide active" data-slide="1">
+                    <div class="slide-content title-slide">
+                        <div class="title-animation">
+                            <div class="ai-icon-container">
+                                <i class="fas fa-robot"></i>
+                                <i class="fas fa-shield-alt"></i>
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <h1 class="main-title">AI in QA & Security Testing</h1>
+                            <p class="subtitle">Practical Applications</p>
+                            <div class="presenters-info">
+                                <p class="presenters">Presented by: <strong>Reduan Masud & Arafat</strong></p>
+                                <p class="team-info">QA Team & xCloud</p>
+                            </div>
+                            <div class="title-decorations">
+                                <div class="decoration-line"></div>
+                                <div class="decoration-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 2: Workshop Agenda -->
+                <section class="slide" data-slide="2">
+                    <div class="slide-content agenda-slide">
+                        <h2 class="slide-title">Workshop Agenda</h2>
+                        <div class="agenda-grid">
+                            <div class="agenda-item clickable" data-reveal="1" data-target-slide="3">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-history"></i>
+                                    <span class="agenda-number">1</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Brief Evolution of Modern AI</h3>
+                                    <p>Understanding AI's journey and current capabilities</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="2" data-target-slide="4">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-robot"></i>
+                                    <span class="agenda-number">2</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Generate Test Cases Using AI</h3>
+                                    <p>Practical AI tools for automated test case generation</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="3" data-target-slide="5">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-dungeon"></i>
+                                    <span class="agenda-number">3</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>DevOps Dungeon - An Interesting App</h3>
+                                    <p>Exploring innovative DevOps automation tools</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="4" data-target-slide="6">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-gem"></i>
+                                    <span class="agenda-number">4</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>An Underrated App: Gemini</h3>
+                                    <p>Discovering hidden gems in AI-powered testing</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="5" data-target-slide="7">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span class="agenda-number">5</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>AI in Security Testing</h3>
+                                    <p>Vulnerability detection and security automation</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="6" data-target-slide="8">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span class="agenda-number">6</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>AI for Learning & Development</h3>
+                                    <p>Continuous learning and skill enhancement with AI</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="7" data-target-slide="8">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span class="agenda-number">7</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Staying Ahead: AI Trends & Resources</h3>
+                                    <p>Future trends and valuable resources</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="agenda-item clickable" data-reveal="8" data-target-slide="8">
+                                <div class="agenda-marker">
+                                    <i class="fas fa-comments"></i>
+                                    <span class="agenda-number">8</span>
+                                </div>
+                                <div class="agenda-content">
+                                    <h3>Q&A and Next Steps</h3>
+                                    <p>Discussion and action items</p>
+                                    <div class="click-hint">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Click to explore</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="agenda-footer">
+                            <p class="agenda-instruction">
+                                <i class="fas fa-hand-pointer"></i>
+                                Click any agenda item to jump directly to that section
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 3: Brief Evolution of Modern AI -->
+                <section class="slide" data-slide="3">
+                    <div class="slide-content ai-evolution-slide">
+                        <h2 class="slide-title">Brief Evolution of Modern AI</h2>
+                        <div class="evolution-subtitle">
+                            <p>From ChatGPT hype to context engineering — the AI journey in QA & Testing</p>
+                        </div>
+
+                        <div class="ai-timeline-horizontal">
+                            <!-- Timeline Progress Line -->
+                            <div class="timeline-progress-horizontal">
+                                <div class="progress-line-horizontal"></div>
+                                <div class="progress-fill-horizontal" id="timelineProgressHorizontal"></div>
+                            </div>
+
+                            <!-- Horizontal Milestones Container -->
+                            <div class="milestones-container">
+                                <!-- Milestone 1: ChatGPT & The Hype -->
+                                <div class="milestone-horizontal" data-milestone="1" data-year="Late 2022">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-comments"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>ChatGPT & The Hype</h4>
+                                        <span class="milestone-year-horizontal">Late 2022</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 2: Prompt Engineering Era -->
+                                <div class="milestone-horizontal" data-milestone="2" data-year="2023">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-brain"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>Prompt Engineering Era</h4>
+                                        <span class="milestone-year-horizontal">2023</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 3: Agentic AI & Tools -->
+                                <div class="milestone-horizontal" data-milestone="3" data-year="Late 2023">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-robot"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>Agentic AI & Tools like n8n</h4>
+                                        <span class="milestone-year-horizontal">Late 2023</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 4: "Vive Coding" Era -->
+                                <div class="milestone-horizontal" data-milestone="4" data-year="Mid 2024">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-code"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>"Vive Coding" Era</h4>
+                                        <span class="milestone-year-horizontal">Mid 2024</span>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 5: Context Engineering -->
+                                <div class="milestone-horizontal" data-milestone="5" data-year="Early 2025">
+                                    <div class="milestone-marker-horizontal">
+                                        <i class="fas fa-database"></i>
+                                        <div class="milestone-pulse-horizontal"></div>
+                                    </div>
+                                    <div class="milestone-info">
+                                        <h4>Beyond Prompts: Context Engineering</h4>
+                                        <span class="milestone-year-horizontal">Early 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Expandable Details Panel -->
+                            <div class="milestone-details-panel" id="detailsPanel">
+                                <!-- Milestone 1 Details -->
+                                <div class="milestone-details-content" data-milestone="1">
+                                    <div class="details-header">
+                                        <h3>ChatGPT & The Hype</h3>
+                                        <span class="details-year">Late 2022</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"The world met ChatGPT!"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>Everyone was chatting with AI — writing poems, code, even love letters</li>
+                                            <li><strong>Fun fact:</strong> ChatGPT hit 100 million users faster than TikTok!</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">100M in 2 months</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 2 Details -->
+                                <div class="milestone-details-content" data-milestone="2">
+                                    <div class="details-header">
+                                        <h3>Prompt Engineering Era</h3>
+                                        <span class="details-year">2023</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"Good prompts = Good results"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>It became an art to coax the best answers from AI</li>
+                                            <li>Prompt jobs popped up everywhere!</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">Prompt Libraries</span>
+                                            <span class="tool-badge">Chain-of-Thought</span>
+                                            <span class="tool-badge">Few-Shot Learning</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 3 Details -->
+                                <div class="milestone-details-content" data-milestone="3">
+                                    <div class="details-header">
+                                        <h3>Agentic AI & Tools like n8n</h3>
+                                        <span class="details-year">Late 2023</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"AI isn't just chat—it's acting like an agent"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>It can browse, write docs, trigger workflows</li>
+                                            <li>Tools like n8n connect AI to real apps and data</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">n8n</span>
+                                            <span class="tool-badge">AutoGPT</span>
+                                            <span class="tool-badge">LangChain</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 4 Details -->
+                                <div class="milestone-details-content" data-milestone="4">
+                                    <div class="details-header">
+                                        <h3>"Vive Coding" Era</h3>
+                                        <span class="details-year">Mid 2024</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"Pair programming became pairing with AI"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>Devs started letting AI co-write code live</li>
+                                            <li>Copilot, Cody, Gemini… helping code faster</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">GitHub Copilot</span>
+                                            <span class="tool-badge">Cody</span>
+                                            <span class="tool-badge">Gemini Code</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Milestone 5 Details -->
+                                <div class="milestone-details-content" data-milestone="5">
+                                    <div class="details-header">
+                                        <h3>Beyond Prompts: Context Engineering</h3>
+                                        <span class="details-year">Early 2025</span>
+                                    </div>
+                                    <div class="details-summary">
+                                        <p>"The future = context > prompt"</p>
+                                    </div>
+                                    <div class="details-list">
+                                        <ul>
+                                            <li>Feed AI your data, docs, memory — it answers better</li>
+                                            <li>RAG (Retrieval-Augmented Generation) rules the stage</li>
+                                        </ul>
+                                        <div class="details-tools">
+                                            <span class="tool-badge">RAG Systems</span>
+                                            <span class="tool-badge">Vector DBs</span>
+                                            <span class="tool-badge">Context Windows</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Evolution Summary Stats -->
+                        <!-- <div class="evolution-stats">
+                            <div class="evolution-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="300">0</span>
+                                    <span class="stat-label">% Faster Development</span>
+                                </div>
+                            </div>
+                            <div class="evolution-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="180">0</span>
+                                    <span class="stat-label">M+ AI Users Globally</span>
+                                </div>
+                            </div>
+                            <div class="evolution-stat">
+                                <div class="stat-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-number" data-target="85">0</span>
+                                    <span class="stat-label">% QA Teams Using AI</span>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- Interactive Hint -->
+                        <div class="timeline-hint">
+                            <div class="hint-section">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Click any milestone to explore details</span>
+                            </div>
+                            <div class="hint-section">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Use <kbd>↑</kbd> <kbd>↓</kbd> keys to navigate timeline • <kbd>Esc</kbd> to close</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 4: Generate Test Cases Using AI - xCloud Workflow -->
+                <section class="slide" data-slide="4">
+                    <div class="slide-content xcloud-workflow-slide">
+                        <h2 class="slide-title">Generate Test Cases Using AI - xCloud Workflow</h2>
+
+                        <!-- Prerequisites Section -->
+                        <div class="prerequisites-section">
+                            <div class="prerequisites-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Prerequisites</h3>
+                            </div>
+                            <div class="prerequisites-content">
+                                <div class="prerequisite-item">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub access to xCloud repository</span>
+                                </div>
+                                <div class="prerequisite-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>Proper Pull Request workflow knowledge</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workflow Navigation -->
+                        <div class="workflow-navigation">
+                            <div class="workflow-progress">
+                                <div class="progress-line-workflow"></div>
+                                <div class="progress-fill-workflow" id="workflowProgress"></div>
+                            </div>
+
+                            <div class="workflow-steps-container">
+                                <!-- Step 1: xCloud Process Overview -->
+                                <div class="workflow-step" data-step="1">
+                                    <div class="step-marker-workflow">
+                                        <i class="fas fa-project-diagram"></i>
+                                        <span class="step-number">1</span>
+                                    </div>
+                                    <div class="step-info">
+                                        <h4>xCloud Process Overview</h4>
+                                        <span class="step-description">GitHub Project Manager Integration</span>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Before vs After -->
+                                <div class="workflow-step" data-step="2">
+                                    <div class="step-marker-workflow">
+                                        <i class="fas fa-balance-scale"></i>
+                                        <span class="step-number">2</span>
+                                    </div>
+                                    <div class="step-info">
+                                        <h4>Before vs. After Comparison</h4>
+                                        <span class="step-description">Traditional vs AI-Powered Methods</span>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Live Demo -->
+                                <div class="workflow-step" data-step="3">
+                                    <div class="step-marker-workflow">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span class="step-number">3</span>
+                                    </div>
+                                    <div class="step-info">
+                                        <h4>Live Demo</h4>
+                                        <span class="step-description">Interactive Workflow Demonstration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Expandable Content Panel -->
+                        <div class="workflow-details-panel" id="workflowDetailsPanel">
+                            <!-- Step 1 Content -->
+                            <div class="workflow-details-content" data-step="1">
+                                <div class="details-header-workflow">
+                                    <h3>xCloud Process Overview</h3>
+                                    <span class="details-badge">GitHub Integration</span>
+                                </div>
+                                <div class="process-overview">
+                                    <div class="overview-item">
+                                        <div class="overview-icon">
+                                            <i class="fab fa-github"></i>
+                                        </div>
+                                        <div class="overview-content">
+                                            <h5>GitHub Project Manager Integration</h5>
+                                            <p>Seamless synchronization between developers and QA teams through automated project management</p>
+                                        </div>
+                                    </div>
+                                    <div class="overview-item">
+                                        <div class="overview-icon">
+                                            <i class="fas fa-code-branch"></i>
+                                        </div>
+                                        <div class="overview-content">
+                                            <h5>Pull Request Workflow</h5>
+                                            <p>Structured workflow for features, fixes, and releases with automated test case generation</p>
+                                        </div>
+                                    </div>
+                                    <div class="overview-item">
+                                        <div class="overview-icon">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </div>
+                                        <div class="overview-content">
+                                            <h5>Developer-QA Synchronization</h5>
+                                            <p>Real-time collaboration and communication through integrated tools and workflows</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 Content -->
+                            <div class="workflow-details-content" data-step="2">
+                                <div class="details-header-workflow">
+                                    <h3>Before vs. After Comparison</h3>
+                                    <span class="details-badge">Transformation</span>
+                                </div>
+                                <div class="comparison-container">
+                                    <div class="comparison-side before">
+                                        <div class="comparison-header">
+                                            <i class="fas fa-clock"></i>
+                                            <h4>Traditional Method</h4>
+                                        </div>
+                                        <div class="comparison-content">
+                                            <ul class="comparison-list">
+                                                <li>Manual test case writing</li>
+                                                <li>Time-consuming QA briefings</li>
+                                                <li>Lengthy code review processes</li>
+                                                <li>Inconsistent test coverage</li>
+                                                <li>Human error prone</li>
+                                            </ul>
+                                            <div class="time-indicator">
+                                                <span class="time-value">4-6 hours</span>
+                                                <span class="time-label">per feature</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comparison-arrow">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                    <div class="comparison-side after">
+                                        <div class="comparison-header">
+                                            <i class="fas fa-robot"></i>
+                                            <h4>AI-Powered Method</h4>
+                                        </div>
+                                        <div class="comparison-content">
+                                            <ul class="comparison-list">
+                                                <li>Automated generation using Augment</li>
+                                                <li>PR ID input for context</li>
+                                                <li>Comprehensive test coverage</li>
+                                                <li>Consistent quality output</li>
+                                                <li>Edge case detection</li>
+                                            </ul>
+                                            <div class="time-indicator success">
+                                                <span class="time-value">30-45 min</span>
+                                                <span class="time-label">per feature</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 Content -->
+                            <div class="workflow-details-content" data-step="3">
+                                <div class="details-header-workflow">
+                                    <h3>Live Demo</h3>
+                                    <span class="details-badge">Interactive</span>
+                                </div>
+                                <div class="demo-section">
+                                    <div class="demo-actions">
+                                        <button class="demo-button primary" onclick="window.open('vscode://file', '_blank')">
+                                            <i class="fas fa-code"></i>
+                                            <span>Open VS Code</span>
+                                        </button>
+                                        <button class="demo-button secondary" onclick="window.open('https://github.com/xCloudDev/xCloud/pulls', '_blank')">
+                                            <i class="fab fa-github"></i>
+                                            <span>View GitHub PRs</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="demo-workflow">
+                                        <div class="workflow-step-demo">
+                                            <div class="step-number-demo">1</div>
+                                            <div class="step-content-demo">
+                                                <h5>Select Pull Request</h5>
+                                                <p>Choose the PR ID from xCloud repository</p>
+                                                <div class="code-example">
+                                                    <code>PR #1234: Feature - User Authentication</code>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="workflow-step-demo">
+                                            <div class="step-number-demo">2</div>
+                                            <div class="step-content-demo">
+                                                <h5>Generate with Augment</h5>
+                                                <p>Use AI to create comprehensive test cases</p>
+                                                <div class="markdown-template">
+                                                    <div class="template-header">
+                                                        <i class="fab fa-markdown"></i>
+                                                        <span>Markdown Prompt Template</span>
+                                                    </div>
+                                                    <div class="template-content">
+                                                        <pre><code>
+                                                        # Test Case Generation for PR #{PR_ID}
+
+                                                        ## Context
+                                                        - Feature: {FEATURE_NAME}
+                                                        - Changes: {CHANGE_DESCRIPTION}
+                                                        - Files Modified: {FILE_LIST}
+
+                                                        ## Generate test cases covering:
+                                                        - Functional testing scenarios
+                                                        - Edge cases and boundary conditions
+                                                        - Integration testing points
+                                                        - Security considerations
+                                                        - Performance implications
+                                                </code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="workflow-step-demo">
+                                            <div class="step-number-demo">3</div>
+                                            <div class="step-content-demo">
+                                                <h5>Review & Execute</h5>
+                                                <p>Validate generated test cases and execute testing</p>
+                                                <div class="results-preview">
+                                                    <div class="result-item">
+                                                        <i class="fas fa-check-circle"></i>
+                                                        <span>25 test cases generated</span>
+                                                    </div>
+                                                    <div class="result-item">
+                                                        <i class="fas fa-shield-alt"></i>
+                                                        <span>Security tests included</span>
+                                                    </div>
+                                                    <div class="result-item">
+                                                        <i class="fas fa-tachometer-alt"></i>
+                                                        <span>Performance tests added</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workflow Navigation Hint -->
+                        <div class="workflow-hint">
+                            <div class="hint-section">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Click any workflow step to explore details</span>
+                            </div>
+                            <div class="hint-section">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Use <kbd>↑</kbd> <kbd>↓</kbd> keys to navigate steps • <kbd>Esc</kbd> to close</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 5: DevOps Dungeon - Level-Based Learning System -->
+                <section class="slide" data-slide="5">
+                    <div class="slide-content devops-dungeon-simple-slide">
+                        <h2 class="slide-title">DevOps Dungeon - Learning Platform</h2>
+
+                        <!-- Platform Overview -->
+                        <div class="platform-overview-simple">
+                            <div class="overview-header-simple">
+                                <div class="platform-logo-simple">
+                                    <i class="fas fa-dungeon"></i>
+                                </div>
+                                <div class="platform-info-simple">
+                                    <h3>Interactive DevOps Learning Environment</h3>
+                                    <p>Hands-on challenges and real-world scenarios for skill development</p>
+                                </div>
+                            </div>
+
+                            <div class="platform-screenshot-simple">
+                                <img src="devops-dungeon.png" alt="DevOps Dungeon Interface" class="screenshot-image-simple">
+                                <div class="screenshot-overlay-simple">
+                                    <div class="overlay-text-simple">Live Platform Interface</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preview Section -->
+                        <div class="preview-section">
+                            <div class="preview-button-container">
+                                <a href="https://studio.firebase.google.com/studio-9086808136" target="_blank" class="preview-button">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Preview Platform</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Engagement Question -->
+                        <div class="engagement-section">
+                            <div class="question-container">
+                                <div class="question-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="question-content">
+                                    <h4>What technical expertise do you think is required to build this platform?</h4>
+                                    <p class="question-hint">Consider the infrastructure, containerization, and deployment requirements...</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </section>
+
+                <!-- Slide 6: An Underrated App - Gemini -->
+                <section class="slide" data-slide="6">
+                    <div class="slide-content timeline-slide">
+                        <h2 class="slide-title">Gemini - An Underrated App</h2>
+                        <div class="gemini-showcase">
+                            <!-- App Screenshots Gallery -->
+                            <div class="gemini-gallery">
+                                <div class="gallery-container">
+                                    <div class="screenshot-item active" data-screenshot="1">
+                                        <img src="gemini-app-01.png" alt="Gemini App - Plugin Analysis" />
+                                        <div class="screenshot-caption">
+                                            <h4>Use Case 1: Plugin Analysis of WPDeveloper</h4>
+                                            <p>Demonstrate Gemini's code analysis and plugin evaluation capabilities</p>
+                                            <a href="https://gemini.google.com/app/249322542af0dc33" target="_blank" class="demo-link">
+                                                <i class="fas fa-external-link-alt"></i> Live Demo
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot-item" data-screenshot="2">
+                                        <img src="gemini-app-02.png" alt="Gemini App - Banner Design" />
+                                        <div class="screenshot-caption">
+                                            <h4>Use Case 2: Banner Design</h4>
+                                            <p>Showcase Gemini's creative design and visual content generation abilities</p>
+                                            <a href="https://gemini.google.com/app/e4f782bbe810159a" target="_blank" class="demo-link">
+                                                <i class="fas fa-external-link-alt"></i> Live Demo
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="screenshot-item" data-screenshot="3">
+                                        <img src="gemini-app-03.png" alt="Gemini App - xCloud vs Gridpane" />
+                                        <div class="screenshot-caption">
+                                            <h4>Use Case 3: xCloud vs Gridpane Comparison</h4>
+                                            <p>Highlight Gemini's analytical comparison and technical evaluation skills</p>
+                                            <a href="https://g.co/gemini/share/52e9cfdfc5bc" target="_blank" class="demo-link">
+                                                <i class="fas fa-external-link-alt"></i> Live Demo
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Gallery Navigation -->
+                                <div class="gallery-nav">
+                                    <button class="gallery-nav-btn gallery-prev-btn" onclick="changeScreenshot(-1, event)">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <div class="gallery-dots">
+                                        <span class="gallery-dot active" onclick="currentScreenshot(1, event)"></span>
+                                        <span class="gallery-dot" onclick="currentScreenshot(2, event)"></span>
+                                        <span class="gallery-dot" onclick="currentScreenshot(3, event)"></span>
+                                    </div>
+                                    <button class="gallery-nav-btn gallery-next-btn" onclick="changeScreenshot(1, event)">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Project Link -->
+                            <div class="project-link-section">
+                                <a href="https://github.com/your-username/gemini-app" target="_blank" class="project-link-btn">
+                                    <i class="fab fa-github"></i>
+                                    <span>Go to Project</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 7: AI in Security Testing -->
+                <section class="slide" data-slide="7">
+                    <div class="slide-content gallery-slide">
+                        <h2 class="slide-title">AI in Security Testing</h2>
+                        <div class="security-grid">
+                            <div class="security-item" data-category="vulnerability">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Vulnerability Detection</h3>
+                                <p>AI-powered SAST/DAST tools for automated security scanning</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">Snyk</span>
+                                    <span class="tool-tag">Veracode</span>
+                                    <span class="tool-tag">Checkmarx</span>
+                                </div>
+                            </div>
+                            <div class="security-item" data-category="penetration">
+                                <div class="security-icon">
+                                    <i class="fas fa-user-secret"></i>
+                                </div>
+                                <h3>Intelligent Penetration Testing</h3>
+                                <p>AI-driven attack simulation and threat modeling</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">Metasploit</span>
+                                    <span class="tool-tag">Burp Suite</span>
+                                    <span class="tool-tag">OWASP ZAP</span>
+                                </div>
+                            </div>
+                            <div class="security-item" data-category="monitoring">
+                                <div class="security-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <h3>Real-time Threat Monitoring</h3>
+                                <p>ML-based anomaly detection and incident response</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">Splunk</span>
+                                    <span class="tool-tag">Darktrace</span>
+                                    <span class="tool-tag">CrowdStrike</span>
+                                </div>
+                            </div>
+                            <div class="security-item" data-category="compliance">
+                                <div class="security-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <h3>Compliance Automation</h3>
+                                <p>Automated security policy validation and reporting</p>
+                                <div class="tools-list">
+                                    <span class="tool-tag">AWS Config</span>
+                                    <span class="tool-tag">Azure Policy</span>
+                                    <span class="tool-tag">Chef InSpec</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="security-stats">
+                            <div class="stat-highlight">
+                                <span class="stat-number">70%</span>
+                                <span class="stat-text">Faster vulnerability detection</span>
+                            </div>
+                            <div class="stat-highlight">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-text">Reduction in false positives</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Slide 8: AI for Learning & Development + Next Steps -->
+                <section class="slide" data-slide="8">
+                    <div class="slide-content conclusion-slide">
+                        <h2 class="slide-title">AI for Learning & Development</h2>
+                        <div class="learning-section">
+                            <div class="learning-grid">
+                                <div class="learning-card">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <h3>Personalized Learning Paths</h3>
+                                    <p>AI-curated courses based on skill gaps and career goals</p>
+                                </div>
+                                <div class="learning-card">
+                                    <i class="fas fa-brain"></i>
+                                    <h3>Intelligent Mentoring</h3>
+                                    <p>AI-powered code reviews and best practice suggestions</p>
+                                </div>
+                                <div class="learning-card">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h3>Progress Tracking</h3>
+                                    <p>Real-time skill assessment and improvement recommendations</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="next-steps-section">
+                            <h3>🚀 Next Steps & Action Items</h3>
+                            <div class="action-items">
+                                <div class="action-item">
+                                    <i class="fas fa-play"></i>
+                                    <span>Start experimenting with AI tools in your current projects</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Form AI-QA study groups within your teams</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-book"></i>
+                                    <span>Explore recommended resources and training materials</span>
+                                </div>
+                                <div class="action-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Identify pilot projects for AI integration</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conclusion-content">
+                            <div class="cta-buttons">
+                                <button class="cta-button primary">Start Your AI Journey</button>
+                                <button class="cta-button secondary">Access Resources</button>
+                            </div>
+                            <div class="contact-info">
+                                <p><strong>Questions & Discussion</strong></p>
+                                <p>Reach out to <strong>Reduan Masud & Arafat</strong> - QA Team & xCloud</p>
+                                <p>Let's continue the conversation and explore AI possibilities together!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Navigation Controls -->
+        <nav class="navigation-controls">
+            <button class="nav-btn prev-btn" title="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="slide-indicators">
+                <button class="indicator active" data-slide="1"></button>
+                <button class="indicator" data-slide="2"></button>
+                <button class="indicator" data-slide="3"></button>
+                <button class="indicator" data-slide="4"></button>
+                <button class="indicator" data-slide="5"></button>
+                <button class="indicator" data-slide="6"></button>
+                <button class="indicator" data-slide="7"></button>
+                <button class="indicator" data-slide="8"></button>
+            </div>
+            <button class="nav-btn next-btn" title="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </nav>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-nav">
+            <button class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="sidebar-content">
+                <h3>Table of Contents</h3>
+                <ul class="toc-list">
+                    <li><a href="#" data-slide="1">AI in QA & Security Testing</a></li>
+                    <li><a href="#" data-slide="2">Workshop Agenda</a></li>
+                    <li><a href="#" data-slide="3">Evolution of Modern AI</a></li>
+                    <li><a href="#" data-slide="4">AI Test Case Generation</a></li>
+                    <li><a href="#" data-slide="5">DevOps Dungeon App</a></li>
+                    <li><a href="#" data-slide="6">Gemini - Underrated App</a></li>
+                    <li><a href="#" data-slide="7">AI in Security Testing</a></li>
+                    <li><a href="#" data-slide="8">Learning & Next Steps</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Search Modal -->
+        <div class="search-modal">
+            <div class="search-content">
+                <div class="search-header">
+                    <input type="text" class="search-input" placeholder="Search slides...">
+                    <button class="search-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="demo-config.js"></script>
+    <script src="script.js"></script>
+    <script src="advanced-features.js"></script>
+</body>
+</html>

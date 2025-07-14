@@ -1,0 +1,171 @@
+// Progress Bar Component Styles
+// Presentation progress indicator
+
+.progress-container {
+  height: var(--progress-height);
+  background: var(--border-color);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--border-color);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  width: 0%;
+  @include transition(width, 0.6s, ease-out);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+  }
+}
+
+// Progress with percentage display
+.progress-with-percentage {
+  .progress-container {
+    display: flex;
+    align-items: center;
+    background: var(--background-secondary);
+    border-radius: $border-radius-sm;
+    padding: $spacing-1;
+    height: auto;
+    min-height: 1.5rem;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 0.5rem;
+    background: var(--border-color);
+    border-radius: $border-radius-sm;
+    margin-right: $spacing-3;
+  }
+
+  .progress-percentage {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+    min-width: 2.5rem;
+    text-align: right;
+  }
+}
+
+// Animated progress states
+.progress-container {
+  &.loading {
+    .progress-fill {
+      background: linear-gradient(90deg,
+        var(--accent-color) 0%,
+        var(--warning-color) 100%
+      );
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  }
+
+  &.complete {
+    .progress-fill {
+      background: var(--success-color);
+    }
+  }
+
+  &.error {
+    .progress-fill {
+      background: var(--error-color);
+    }
+  }
+}
+
+// Keyframe animations
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Responsive adjustments
+@include respond-to('mobile') {
+  .progress-container {
+    height: calc(var(--progress-height) * 1.5);
+  }
+
+  .progress-with-percentage {
+    .progress-container {
+      padding: $spacing-1 $spacing-2;
+    }
+
+    .progress-percentage {
+      font-size: $font-size-xs;
+      min-width: 2rem;
+    }
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .progress-fill {
+    background: var(--text-primary) !important;
+  }
+
+  .progress-container {
+    border: 1px solid var(--text-primary);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill {
+    transition: none;
+  }
+
+  .progress-container::after {
+    animation: none;
+  }
+
+  .progress-container.loading .progress-fill {
+    animation: none;
+  }
+}

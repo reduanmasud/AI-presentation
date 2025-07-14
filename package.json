@@ -1,15 +1,16 @@
 {
   "name": "interactive-presentation-slider",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A modern, feature-rich presentation slider with smooth animations and interactive elements",
-  "main": "index.html",
+  "type": "module",
+  "main": "src/main.js",
   "scripts": {
-    "start": "python3 -m http.server 8000",
-    "serve": "npx serve .",
-    "test": "open test.html",
-    "dev": "npx live-server .",
-    "build": "echo 'No build process needed for static files'",
-    "lint": "echo 'Add linting tools as needed'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js --fix",
+    "format": "prettier --write src/**/*.{js,scss,css}",
+    "start": "npm run dev"
   },
   "keywords": [
     "presentation",
@@ -25,17 +26,21 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/interactive-presentation-slider.git"
+    "url": "git+https://github.com/yourusername/interactive-presentation-slider.git"
   },
   "bugs": {
     "url": "https://github.com/yourusername/interactive-presentation-slider/issues"
   },
   "homepage": "https://github.com/yourusername/interactive-presentation-slider#readme",
   "devDependencies": {
-    "live-server": "^1.2.2",
-    "serve": "^14.2.0"
+    "vite": "^5.0.0",
+    "sass": "^1.69.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "@vitejs/plugin-legacy": "^5.0.0"
   },
-  "dependencies": {},
   "browserslist": [
     "> 1%",
     "last 2 versions",

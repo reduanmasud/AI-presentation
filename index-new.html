@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Presentation Slider</title>
+    <meta name="description" content="AI in QA & Security Testing - Interactive Presentation">
+    <meta name="author" content="Reduan Masud & Arafat">
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- External CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Main CSS (will be processed by Vite) -->
+    <link rel="stylesheet" href="/src/styles/main.scss">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading Presentation...</p>
+        </div>
+    </div>
+
+    <!-- Main Presentation Container -->
+    <div class="presentation-container" id="presentation-container">
+        <!-- Header -->
+        <header class="presentation-header">
+            <div class="header-left">
+                <h1 class="presentation-title">AI in QA & Security Testing</h1>
+                <div class="slide-counter">
+                    <span class="current-slide">1</span> / <span class="total-slides">8</span>
+                </div>
+            </div>
+            
+            <div class="header-controls">
+                <button class="control-btn search-btn" id="search-btn" title="Search slides">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="control-btn bookmark-btn" id="bookmark-btn" title="Bookmark this slide">
+                    <i class="far fa-bookmark"></i>
+                </button>
+                <button class="control-btn fullscreen-btn" id="fullscreen-btn" title="Toggle fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="control-btn theme-btn" id="theme-btn" title="Toggle theme">
+                    <i class="fas fa-palette"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="search-overlay">
+            <div class="search-container">
+                <input type="text" class="search-input" id="search-input" placeholder="Search slides...">
+                <button class="search-close" id="search-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+
+        <!-- Main Slider Container -->
+        <main class="slider-container">
+            <div class="slides-wrapper" id="slides-wrapper">
+                <!-- Slides will be dynamically generated here -->
+            </div>
+        </main>
+
+        <!-- Navigation Controls -->
+        <div class="navigation-controls">
+            <button class="nav-btn prev-btn" id="prev-btn" title="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn next-btn" id="next-btn" title="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Slide Indicators -->
+        <div class="slide-indicators" id="slide-indicators">
+            <!-- Indicators will be dynamically generated -->
+        </div>
+
+        <!-- Auto-play Controls -->
+        <div class="autoplay-controls">
+            <button class="autoplay-btn" id="autoplay-btn" title="Toggle auto-play">
+                <i class="fas fa-play"></i>
+            </button>
+            <div class="autoplay-timer" id="autoplay-timer"></div>
+        </div>
+    </div>
+
+    <!-- Bookmark Panel -->
+    <div class="bookmark-panel" id="bookmark-panel">
+        <div class="bookmark-header">
+            <h3>Bookmarks</h3>
+            <button class="bookmark-close" id="bookmark-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="bookmark-list" id="bookmark-list">
+            <!-- Bookmarks will be dynamically generated -->
+        </div>
+    </div>
+
+    <!-- Main JavaScript Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

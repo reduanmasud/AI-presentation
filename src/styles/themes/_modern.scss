@@ -1,0 +1,34 @@
+// Modern Theme Styles
+// This theme provides the default modern look for the presentation
+
+// Theme-specific color overrides
+.theme-modern {
+  --primary-color: #{$primary-blue};
+  --secondary-color: #{$secondary-blue};
+  --accent-color: #{$accent-orange};
+  
+  --background: #{$white};
+  --background-secondary: #{$gray-50};
+  --background-tertiary: #{$gray-100};
+  
+  --text-primary: #{$gray-900};
+  --text-secondary: #{$gray-600};
+  --text-tertiary: #{$gray-400};
+  --text-inverse: #{$white};
+  
+  --border-color: #{$gray-200};
+  --border-color-hover: #{$gray-300};
+  --border-color-focus: #{$primary-blue};
+}
+
+// Default theme (applied to root)
+:root {
+  // Modern theme is the default, so variables are already set in _variables.scss
+}
+
+// Dark mode support (for future implementation)
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Dark theme variables will be added in future iterations
+  }
+}
