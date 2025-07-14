@@ -1,0 +1,17 @@
+./node_modules
+./.DS_Store
+./.vscode
+./.git
+./.github
+./.gitignore
+./.eslintrc.json
+./.prettierrc.json
+./.prettierignore
+./.eslintignore
+./.npmignore
+./.npmrc
+./.yarnrc
+./.yarnrc.yml
+./.yarn
+./.yarnrc
+./.yarnrc.yml
